@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+        <config>
+          <!-- If true, we are running Ninja within Weblogic, thus letting WLS handle DB and Jolt. -->
+          <isweblogic>false</isweblogic>
+          <db>
+            <!-- The root of the configuration for database access -->
+            <dir ignoreempty="true">conf/ninja/dk.prod/db</dir>
+          </db>
+          <jolt>
+            <!-- The root of the configuration for Tuxedo (via Jolt) -->
+            <file ignoreempty="true">conf/ninja/dk.prod/jolt/config.xml</file>
+          </jolt>
+        </config>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>
+

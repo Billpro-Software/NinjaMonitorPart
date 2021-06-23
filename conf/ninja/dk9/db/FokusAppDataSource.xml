@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+	<db>
+	  <!-- The class-name of the JDBC driver -->
+	  <driver>oracle.jdbc.OracleDriver</driver>
+	  <!-- The sub-protocol, for example 'oracle:thin' or 'oracle:oci8' -->
+	  <subprotocol>oracle:thin</subprotocol>
+	  <!-- The Database URL, formatted as such: 'host:port:sid' -->
+	  <url>fokustst1.netcom.no:1521:test7</url>
+	  <!-- The user / schema name -->
+	  <username>tmdtapp9</username>
+	  <!-- The password -->
+	  <password>tmdtapp9</password>
+	</db>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>
+

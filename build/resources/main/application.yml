@@ -1,0 +1,7 @@
+version: 0.2
+
+config: classpath:logback-spring.xml
+  level:
+    dao: debug
+    org:
+      mybatis: debug

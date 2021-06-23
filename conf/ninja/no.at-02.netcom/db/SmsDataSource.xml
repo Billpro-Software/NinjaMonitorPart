@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+        <db>
+          <!-- The class-name of the JDBC driver -->
+          <driver>oracle.jdbc.OracleDriver</driver>
+          <!-- The sub-protocol, for example 'oracle:thin' or 'oracle:oci8' -->
+          <subprotocol>oracle:thin</subprotocol>
+          <!-- The Database sgkontant01.netcom.no:1522/KO01P, formatted as such: 'host:port:sid' -->
+          <url>sgkontant01.netcom.no:1522/KO01P</url>
+          <!-- The user / schema name -->
+          <username>smssend</username>
+          <!-- The password -->
+          <password>sms111</password>
+        </db>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+	<db>
+	  <!-- The class-name of the JDBC driver -->
+	  <driver>oracle.jdbc.OracleDriver</driver>
+	  <!-- The sub-protocol, for example 'oracle:thin' or 'oracle:oci8' -->
+	  <subprotocol>oracle:thin</subprotocol>
+	  <!-- The Database URL, formatted as such: 'host:port:sid' -->
+	  <url>dbtest07.netcom.no:1521:ni01t</url>
+	  <!-- The user / schema name -->
+	  <username>ninjamain_st</username>
+	  <!-- The password -->
+	  <password>ninjamain_st</password>
+	  <pool>
+	    <!-- The minutes of idle until a pool'ed connection is closed -->
+	    <idletime ignoreempty="true">3</idletime>
+	    <!-- The logging interval - in minutes -->
+	    <loginterval ignoreempty="true">3</loginterval>
+	    <!-- The (maximum) size of the pool -->
+	    <size ignoreempty="true">50</size>
+	  </pool>
+	</db>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>

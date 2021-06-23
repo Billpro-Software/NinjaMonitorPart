@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com>
+    <teliasonera>
+        <ipl>
+            <ninja>
+                <config>
+                    <!-- If true, we are running Ninja within Weblogic, thus letting WLS handle DB and Jolt. -->
+                    <isweblogic>false</isweblogic>
+                    <db>
+                        <!-- The root of the configuration for database access -->
+                        <dir ignoreempty="true">conf/ninja/no.pt.netcom/db</dir>
+                    </db>
+                    <jolt>
+                        <!-- The root of the configuration for Tuxedo (via Jolt) -->
+                        <file ignoreempty="true">conf/ninja/no.pt.netcom/jolt/config.xml</file>
+                    </jolt>
+
+                    <NinjaAutomatedTest>
+
+                        <WSDLs>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Account/Account_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Financial/Financial_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Nsl/Nsl_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Subscription/Subscription_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Order/Order_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/TelephoneRegistry/TelephoneRegistry_v3_0.wsdl</wsdl>
+                            <wsdl>http://no-neo-pt-01.netcom.no:7001/Equipment/Equipment_v3_0.wsdl</wsdl>
+                        </WSDLs>
+
+
+
+                        <Urls>
+                            <Nsl>http://no-neo-pt-01.netcom.no:7001/TelephoneRegistry</Nsl>
+                            <Generic>http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry</Generic>
+                            <Mdwc>http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry/</Mdwc>
+                        </Urls>
+
+                        <!-- url for Http requests -->
+                        <url ignoreempty="true">http://no-neo-pt-01.netcom.no:7001/TelephoneRegistry/</url>
+                    </NinjaAutomatedTest>
+
+
+                </config>
+            </ninja>
+        </ipl>
+    </teliasonera>
+</com>

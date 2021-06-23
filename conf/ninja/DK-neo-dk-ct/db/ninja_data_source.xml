@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+	<db>
+	  <!-- The class-name of the JDBC driver -->
+	  <driver>oracle.jdbc.OracleDriver</driver>
+	  <!-- The sub-protocol, for example 'oracle:thin' or 'oracle:oci8' -->
+	  <subprotocol>oracle:thin</subprotocol>
+	  <!-- The Database URL, formatted as such: 'host:port:sid' -->
+	  <url>neo.dk.ct.db.teliasonera.net:1521/NEO.DK.CT</url>
+        <!-- The user / schema name -->
+        <username>ninjamain</username>
+        <!-- The password -->
+        <password>t1h3KRMlN2ZcHSKc+L4tCw==</password>
+	  <pool>
+	    <!-- The minutes of idle until a pool'ed connection is closed -->
+	    <idletime ignoreempty="true"></idletime>
+	    <!-- The logging interval - in minutes -->
+	    <loginterval ignoreempty="true"></loginterval>
+	    <!-- The (maximum) size of the pool -->
+	    <size ignoreempty="true"></size>
+	  </pool>
+	</db>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>

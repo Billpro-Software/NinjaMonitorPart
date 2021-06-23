@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+	<jolt>
+	  <!-- The name of the Jolt pool -->
+	  <poolname>fokusJoltpool</poolname>
+	  <address>
+	    <!-- The primary address to connect to -->
+	    <primary>//212.45.180.173:22050</primary>
+	    <!-- The failover address to connect to -->
+	    <failover>//212.45.180.173:22050</failover>
+	  </address>
+	  <size>
+	    <!-- The maximum pool-size -->
+	    <max>25</max>
+	    <!-- The minimum pool-size -->
+	    <min>0</min>
+	  </size>
+	</jolt>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>

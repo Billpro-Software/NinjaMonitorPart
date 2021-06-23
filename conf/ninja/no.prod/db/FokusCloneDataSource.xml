@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<com>
+  <teliasonera>
+    <ipl>
+      <ninja>
+        <db>
+          <!-- The class-name of the JDBC driver -->
+          <driver>oracle.jdbc.OracleDriver</driver>
+          <!-- The sub-protocol, for example 'oracle:thin' or 'oracle:oci8' -->
+          <subprotocol>oracle:thin</subprotocol>
+          <!-- The Database jdbc:oracle:thin:@(DESCRIPTION=(CONNECT_TIMEOUT=4)(ENABLE=BROKEN)(RETRY_COUNT=3)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=dbprod12.netcom.no)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=dbprod09.netcom.no)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=P01OL1SRV))), formatted as such: 'host:port:sid' -->
+          <url>(DESCRIPTION=(CONNECT_TIMEOUT=4)(ENABLE=BROKEN)(RETRY_COUNT=3)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=dbprod12.netcom.no)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=dbprod09.netcom.no)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=P01OL1SRV)))</url>
+          <!-- The user / schema name -->
+          <username>ninja</username>
+          <!-- The password -->
+          <password>ninja</password>
+        </db>
+      </ninja>
+    </ipl>
+  </teliasonera>
+</com>

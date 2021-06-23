@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com>
+	<teliasonera>
+		<ipl>
+			<ninja>
+				<config>
+					<!-- If true, we are running Ninja within Weblogic, thus letting WLS handle DB and Jolt. -->
+					<isweblogic>false</isweblogic>
+					<db>
+						<!-- The root of the configuration for database access -->
+						<dir ignoreempty="true">conf/ninja/neo-dk-at/db</dir>
+					</db>
+					<jolt>
+						<!-- The root of the configuration for Tuxedo (via Jolt) -->
+						<file ignoreempty="true">conf/ninja/neo-dk-at/jolt/config.xml</file>
+					</jolt>
+					<NinjaAutomatedTest>
+
+						<Urls>
+							<Nsl>http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry</Nsl>
+							<Generic>http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry</Generic>
+							<Mdwc>http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry/</Mdwc>
+						</Urls>
+
+
+						<projects>
+							<project>
+								<name>NSL</name>
+								<config-dir>nsl</config-dir>
+								<url ignoreempty="true">http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry/</url>
+							</project>
+							<project>
+								<name>GENERIC</name>
+								<config-dir>generic</config-dir>
+								<url ignoreempty="true">http://no-neo-prod-01.netcom.no:7001/TelephoneRegistry/</url>
+							</project>
+						</projects>
+
+
+					</NinjaAutomatedTest>
+
+				</config>
+			</ninja>
+		</ipl>
+	</teliasonera>
+</com>

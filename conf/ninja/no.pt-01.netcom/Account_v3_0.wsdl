@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ipl.netcom.no/AccountDomain/Account" xmlns:sch0="http://ipl.netcom.no/service/account/v1_2" xmlns:sch1="http://ipl.netcom.no/service/simpletypes/v1_2" xmlns:sch2="http://ipl.netcom.no/service/common/v1_2" xmlns:sch3="http://ipl.netcom.no/version2.0/annotation" xmlns:sch4="http://ipl.netcom.no/service/order/v1_2" xmlns:sch5="http://ipl.netcom.no/service/account/v1_3" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ipl.netcom.no/AccountDomain/Account" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ipl.netcom.no/service/account/v1_2" xmlns="http://ipl.netcom.no/service/account/v1_2" xmlns:ann="http://ipl.netcom.no/version2.0/annotation" xmlns:common="http://ipl.netcom.no/service/common/v1_2" xmlns:order="http://ipl.netcom.no/service/order/v1_2" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation>
+			The following xsd:elements define messages exchanged by the Account service
+		</xsd:documentation></xsd:annotation><xsd:import namespace="http://ipl.netcom.no/service/order/v1_2"/><xsd:import namespace="http://ipl.netcom.no/version2.0/annotation"/><xsd:import namespace="http://ipl.netcom.no/service/common/v1_2"/><xsd:element name="CreateAccountRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProducts" type="common:AdditionalProductType"/><xsd:element minOccurs="0" name="AccountName" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The name of the account
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="LegalResponsible" type="common:CustomerType"><xsd:annotation><xsd:documentation>
+						Contains customer information for the legal
+						responsible
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="InvoiceReceiver" type="common:CustomerType"><xsd:annotation><xsd:documentation>
+						Contains customer information for the invoice
+						receiver
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="contact" type="common:ContactType"><xsd:annotation><xsd:documentation>
+						Contains contact information for this account
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementType" type="xsd:string"><xsd:annotation><xsd:appinfo>deprecated</xsd:appinfo><xsd:documentation>
+						Type of agreement - Legal values are PRIVATE, ORGANIZATION, BUSINESS. This
+						element is deprecated, because it will be substituted by element AccountType.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="AgreementSubtype" type="xsd:string"><xsd:annotation><xsd:appinfo>deprecated</xsd:appinfo><xsd:documentation>
+						Type of sub agreement - Legal values are REGULAR, MEMBER, EMPLOYEE. This
+						element is deprecated, because it will be substituted by element AccountSubtype.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AgreementItems"><xsd:annotation><xsd:documentation>
+						Type of sub agreement - Legal values are TF
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of account - Legal values are B,C,D,E,I,L,R,S
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountSubtype" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Sub type of account - Legal values are PL,S1,SA,HB,BP,PR ...etc.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SubscriptionType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						This field is used to indicate what kind of
+						subscriptions that are to be placed on the
+						account to create. Example:If TELEMETRY is set
+						the
+						mapping module of ninja service layer will
+						derive the account type/subtype to be B/TE This
+						is currently not in use but exists in the
+						interface for future
+						use.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="billConfiguration" type="common:BillConfiguration"/><xsd:element minOccurs="0" name="ParentAccount" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Contains the id of the mother account - this
+						should be a "BEDRIFT SKILLEMAPPE"
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CRMCustomerId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Contains the id of the customer in a CRM system, if applicable
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="creditLimit" type="xsd:int"><xsd:annotation><xsd:documentation>
+						credit limit for new account. Which is going to set in Fokus
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="agreementTerms" type="AgreementTermsType"><xsd:annotation><xsd:documentation>The telephonenumber of the WF administrator</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="accountProducts" type="common:AdditionalProductType"><xsd:annotation><xsd:documentation>
+						Ban level socs to add to this accouunt. The soc should be specified directly in explicitSoc
+						</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="strategyCode" type="xsd:string"><xsd:annotation><xsd:documentation>
+						StrategyCode identifier, indicates which credit class is to be set in Fokus
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="communicationPreference" type="order:CommunicationPreferenceType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the communication preference (e.g. No SMS or MMS Communcation).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommunicationPreferenceCode" type="xsd:string"><xsd:annotation><xsd:documentation>Identifies a communication preference code (e.g. lang:Norwegian, Y - Ja til all 1:1 kommunikasjon).</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CreateAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateAccountResponseBase"><xsd:sequence><xsd:element name="AccountId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="GetAccountDataRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetAccountDataRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetAccountDataRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="TelephoneNumber" type="common:TelephoneNumberType"/></xsd:sequence></xsd:complexType><xsd:element name="GetAccountDataResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetAccountDataResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetAccountDataResponseBase"><xsd:sequence><xsd:element name="AccountId" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Customer" type="common:CustomerType"><xsd:annotation><xsd:documentation>
+						Construct holding BILLING and LEGAL user information (name and address)
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="AgreementType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of agreement - Legal values are PRIVATE, COOP, ORGANIZATION, BUSINESS, INCONSISTENT
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="AgreementSubtype" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Agreement subtype - Legal values are REGULAR,
+						MEMBER, EMPLOYEE, INDIVIDUAL
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="AgreementId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The id of the agreement, in most cases the organizational number
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OwningAccount" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Contains the id of the owning account (if any)
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountType" type="xsd:string"/><xsd:element minOccurs="0" name="AccountSubType" type="xsd:string"/><xsd:element minOccurs="0" name="BillingType" type="xsd:string"/><xsd:element minOccurs="0" name="BillingTypeParameter" type="BillingTypeParameterType"/><xsd:element name="BillingCycle" type="xsd:int"/><xsd:element name="PaymentMethod" type="xsd:string"/><xsd:element name="PaymentSubMethod" type="xsd:string"/><xsd:element name="IsTaxExempt" type="xsd:boolean"/><xsd:element name="IsDelinquent" type="xsd:boolean"/><xsd:element minOccurs="0" name="NextCollectionStep" type="xsd:string"/><xsd:element name="InvoiceReceiver" type="common:CustomerType"/><xsd:element name="LegalResponsible" type="common:CustomerType"/><xsd:element name="ActiveSubscriptionsCount" type="xsd:int"/><xsd:element name="Status" type="xsd:string"/><xsd:element minOccurs="0" name="InvoiceReceived" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						If the customer does not receive an invoice it is a prepaid subscription. If true
+						it is either a postpaid or a
+						hybrid and means that the customer must have been creditchecked in the past.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AgreementItems"/><xsd:element minOccurs="0" name="HomeTelephoneNumber" type="common:TelephoneNumberType"/></xsd:sequence></xsd:complexType><xsd:element name="UpdateAccountLegalAddressRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateAccountLegalAddressRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateAccountLegalAddressRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="Account" type="common:AccountType"><xsd:annotation><xsd:documentation>The account to update</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="legalResponsible" type="common:CustomerType"><xsd:annotation><xsd:documentation>Contains customer address for the legal responsible</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UpdateAccountBillingAddressRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateAccountBillingAddressRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateAccountBillingAddressRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation>The account to update</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="billingResponsible" type="common:CustomerType"><xsd:annotation><xsd:documentation>Contains customer address for the billing responsible</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UpdateAccountLegalAddressResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateAccountLegalAddressResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateAccountLegalAddressResponseBase"><xsd:sequence><xsd:element name="Status" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="UpdateAccountBillingAddressResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateAccountBillingAddressResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateAccountBillingAddressResponseBase"><xsd:sequence><xsd:element name="Successfull" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="ModifyAccountRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="ModifyAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ModifyAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelCode" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="AccountIdentifier" type="common:AccountIdentifierType"/><xsd:element minOccurs="0" name="BillingTypeModifications" type="ModifyBillingType"/><xsd:element minOccurs="0" name="AccountProductModifications" type="ModifyAccountProductType"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProducts" type="common:AdditionalProductType"/><xsd:element minOccurs="0" name="HomeTelephoneNumber" type="common:TelephoneNumberType"/><xsd:element minOccurs="0" name="BillingResponsible" type="common:CustomerType"/><xsd:element minOccurs="0" name="LegalResponsible" type="common:CustomerType"/><xsd:element minOccurs="0" name="AccountName" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The name of the account
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="agreementTerms" type="AgreementTermsType"><xsd:annotation><xsd:documentation>The telephonenumber of the WF administrator</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of agreement - Legal values are PRIVATE,
+						ORGANIZATION, BUSINESS
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementSubtype" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of sub agreement - Legal values are
+						REGULAR, MEMBER, EMPLOYEE
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AgreementItems"><xsd:annotation><xsd:documentation>
+						Type of sub agreement - Legal values are TF
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" name="associatedMembers" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation>The telephone numbers of the associated WF member(s)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="creditLimit" type="xsd:int"><xsd:annotation><xsd:documentation>
+						credit limit for new account. Which is going to set in Fokus
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="strategyCode" type="xsd:string"><xsd:annotation><xsd:documentation>
+						StrategyCode identifier, indicates which credit class is to be set in Fokus
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="communicationPreference" type="order:CommunicationPreferenceType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the communication preference (e.g. No SMS or MMS Communcation).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommunicationPreferenceCode" type="xsd:string"><xsd:annotation><xsd:documentation>Identifies a communication preference code (e.g. lang:Norwegian, Y - Ja til all 1:1 kommunikasjon).</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ModifyBillingType"><xsd:sequence><xsd:element minOccurs="0" name="billConfiguration" type="common:BillConfiguration"/></xsd:sequence></xsd:complexType><xsd:complexType name="ModifyAccountProductType"><xsd:annotation><xsd:documentation>
+				Product added to an account, this is what is referred to as BAN level SOC in the billing system
+			</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="ProductName" type="xsd:string"><xsd:annotation><xsd:documentation>Uhhh, the name of the product, go figure!</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="Action"><xsd:annotation><xsd:documentation>Allowed values are: "A" (Add), "D" (Delete)</xsd:documentation></xsd:annotation><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:enumeration value="A"/><xsd:enumeration value="D"/></xsd:restriction></xsd:simpleType></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ModifyInvoiceReceiverInformation"><xsd:annotation><xsd:documentation>Contains attributes that may be changed for invoice receivers</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="InvoiceReceiverName" type="xsd:string"><xsd:annotation><xsd:documentation>
+						This is the name of the organization receiving the bill/invoice
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="InvoiceReceiverAddress" type="common:AddressType"/></xsd:sequence></xsd:complexType><xsd:element name="ModifyAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="ModifyAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ModifyAccountResponseBase"><xsd:sequence><xsd:element name="SuccessfulResponse" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="BillingType"><xsd:complexType><xsd:complexContent><xsd:extension base="BillingTypeBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BillingTypeBase"><xsd:annotation><xsd:documentation>TODO: Document me please!!!!</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="BillingCode" type="xsd:string"/><xsd:element minOccurs="0" name="Description" type="xsd:string"/><xsd:element minOccurs="0" name="Price" type="xsd:float"/><xsd:element minOccurs="0" name="HasEmailAddress" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:complexType name="BillingTypeParameterType"><xsd:annotation><xsd:documentation>Parameters on the billing type, f.ex email address</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="EmailAddress" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="SetAccountBillingMethodRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="SetAccountBillingMethodRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SetAccountBillingMethodRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="BillingMethod" type="common:BillingMethodType"/><xsd:element name="Account" type="common:AccountIdentifierSequencedType"/></xsd:sequence></xsd:complexType><xsd:element name="SetAccountBillingMethodResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="SetAccountBillingMethodResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SetAccountBillingMethodResponseBase"><xsd:sequence><xsd:element name="SuccessFull" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="GetWirelessFamilySubscribersRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetWirelessFamilySubscribersRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetWirelessFamilySubscribersRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/></xsd:sequence></xsd:complexType><xsd:element name="GetWirelessFamilySubscribersResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetWirelessFamilySubscribersResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetWirelessFamilySubscribersResponseBase"><xsd:sequence><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="Administrator" type="common:WirelessFamilyAdministratorType"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Members" type="common:SubscriberType"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AssoiciatedMembers" type="common:TelephoneNumberType"/></xsd:sequence></xsd:complexType><xsd:element name="GetAvailableBillingTypesRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetAvailableBillingTypesRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetAvailableBillingTypesRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element minOccurs="0" name="AccountId" type="xsd:string"/><xsd:element name="ChannelCode" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/></xsd:sequence></xsd:complexType><xsd:element name="GetAvailableBillingTypesResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetAvailableBillingTypesResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetAvailableBillingTypesResponseBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="BillingType" type="BillingTypeBase"/></xsd:sequence></xsd:complexType><xsd:element name="InvoiceReprintRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+				Request to trigger an Invoice/Bill reprint in the CentralReprintRequest table in Fokus.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="InvoiceReprintRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="InvoiceReprintRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						To specify a channel type making the request (e.g. EXT_STORE, EXT_WEB, etc.).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Dealer code identifying the dealer (required by underlying systems; i.e. Ninja Service Layer).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">
+						Telephone number identifying a subscription (e.g. 4790050111 for Norway).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="InvoiceMonth" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						The month, in two digits, for which to request an invoice reprint. (e.g. 09 for september)
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="InvoiceYear" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						The year, in four digits, for which to request an invoice reprint. (e.g. 2009)
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="InvoiceReprintResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+				The response of the invoice reprint request.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="InvoiceReprintResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="InvoiceReprintResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Contains the value 'true' if the invoice reprint order was successfull, if not it will be 'false'.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="Subscription"><xsd:sequence><xsd:element name="subscriptionId" type="xsd:string"/><xsd:element name="subscriptionStatus" type="xsd:string"><xsd:annotation><xsd:documentation>The status of the subscription: ACTIVE, CANCELLED, NONE, RESERVED, SUSPENDED, PENDING_INTERNAL_PORT_IN</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="moveStatus" type="xsd:string"><xsd:annotation><xsd:documentation>The status of the subscription move: MOVED, NOT_MOVED, ERROR, VALIDATION_ERROR</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CopyAccountRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+				Request to copy an account.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CopyAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CopyAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						To specify a channel type making the request (e.g. EXT_STORE, EXT_WEB, etc.).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Dealer code identifying the dealer (required by underlying systems; i.e. Ninja Service Layer).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						The ID of the account to copy.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NewAccountType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Account type to be used for new account, if different from that of the account being copied.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NewAccountSubType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Account subtype to be used for new account, if different from that of the account being copied.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NewParentAccountId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						The ID of the parent account under which the copied account should be created.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NewRootAccountId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						The ID of the root account under which the copied account should be created.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="SetAsRoot" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Should new ban be set as the root of a ban tree?
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="MoveSubscriptions" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Should subscriptions on the account be moved to the copy?
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="CancelOldAccount" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Should old account be cancelled after being copied?
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CopyAccountResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+				The response of the copy account request.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CopyAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CopyAccountResponseBase"><xsd:sequence><xsd:element minOccurs="0" name="newAccountId" type="xsd:string"/><xsd:element name="accountStatus" type="xsd:string"><xsd:annotation><xsd:documentation>The status of the account: TENTATIVE, OPEN, SUSPENDED, CANCELLED, CLOSED</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="copyStatus" type="xsd:string"><xsd:annotation><xsd:documentation>The status of the account copy: COPIED, NOT_COPIED, ERROR</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="oldAccountCancellationStatus" type="xsd:string"><xsd:annotation><xsd:documentation>The status of the cancellation of the old account: CANCELLED, NOT_CANCELLED, ALREADY_CANCELLED</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="oldAccountPaymentMethod" type="xsd:string"/><xsd:element minOccurs="0" name="oldAccountPaymentSubMethod" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="subscription" type="Subscription"/></xsd:sequence></xsd:complexType><xsd:element name="GetUnpaidInvoicesRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+				Request to get a list of unpaid invoices from Fokus.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="GetUnpaidInvoicesRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetUnpaidInvoicesRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						To specify a channel type making the request (e.g. EXT_STORE, EXT_WEB, etc.).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Dealer code identifying the dealer (required by underlying systems; i.e. Ninja Service Layer).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">
+						Telephone number identifying a subscription (e.g. 4790050111 for Norway).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="StartDate" type="xsd:date"><xsd:annotation><xsd:documentation xml:lang="en">
+						Date how far back looking for invoice. Default 1.1.1970.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="GetUnpaidInvoicesResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+				The response of the get unpaid invoices request.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="GetUnpaidInvoicesResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetUnpaidInvoicesResponseBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="UnpaidInvoices" type="UnpaidInvoiceType"/><xsd:element minOccurs="0" name="CollectionNextStep" type="CollectionNextStepType"/></xsd:sequence></xsd:complexType><xsd:complexType name="UnpaidInvoiceType"><xsd:sequence><xsd:element name="InvoiceNumber" type="xsd:string"/><xsd:element name="BillingDate" type="xsd:date"/><xsd:element name="DueDate" type="xsd:date"/><xsd:element name="Amount" type="xsd:float"/><xsd:element minOccurs="0" name="AccountNumber" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="CollectionNextStepType"><xsd:sequence><xsd:element name="Action" type="CollectionNextStepActionType"/><xsd:element minOccurs="0" name="ActionDescription" type="xsd:string"/><xsd:element minOccurs="0" name="Date" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:simpleType name="CollectionNextStepActionType"><xsd:annotation><xsd:documentation xml:lang="en">Specify collection next action type.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:enumeration value="CANCEL"/><xsd:enumeration value="SUSPEND"/><xsd:enumeration value="CAC"/><xsd:enumeration value="WRITE_OFF"/></xsd:restriction></xsd:simpleType><xsd:element name="DeferInvoicePaymentRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+				Request to defer subscription.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="DeferInvoicePaymentRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="DeferInvoicePaymentRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						To specify a channel type making the request (e.g. EXT_STORE, EXT_WEB, etc.).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Dealer code identifying the dealer (required by underlying systems; i.e. Ninja Service Layer).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">
+						Telephone number identifying a subscription (e.g. 4790050111 for Norway).
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="DeferInvoicePaymentResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+				The response of the get detail if subscription deferral request.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="DeferInvoicePaymentResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="DeferInvoicePaymentResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"/><xsd:element minOccurs="0" name="NextPaymentDate" type="xsd:date"/><xsd:element minOccurs="0" name="OriginalPaymentDate" type="xsd:date"/><xsd:element minOccurs="0" name="Reason" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="SetCollectionAwaitingCreditCardPaymentRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+				Adds a charge corresponding to handling a credit card payment
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="SetCollectionAwaitingCreditCardPaymentRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SetCollectionAwaitingCreditCardPaymentRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						To specify a channel type making the request (e.g. EXT_STORE, EXT_WEB, etc.).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Dealer code identifying the dealer (required by underlying systems; i.e. Ninja Service Layer).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">
+						Telephone number identifying a subscription (e.g. 4790050111 for Norway).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="paymentDescription" type="xsd:string"/><xsd:element name="purchaseReference" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">
+						Identifies the purchase reference across system. Can be used to look up purchase in external payment system
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="SetCollectionAwaitingCreditCardPaymentResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+				The response of the get detail if subscription deferral request.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="SetCollectionAwaitingCreditCardPaymentResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SetCollectionAwaitingCreditCardPaymentResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:complexType name="AgreementTermsType"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="agreementTerm" type="common:AgreementTermType"/></xsd:sequence></xsd:complexType><xsd:element name="CancelAccountRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	            Request to cancel an account
+	        </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CancelAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="ReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="MemoText" type="xsd:string"/><xsd:element minOccurs="0" name="CancelDate" type="xsd:date"/><xsd:element name="waivePenaltyCharges" type="xsd:boolean"/><xsd:element minOccurs="0" name="waiveReasonCode" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="CancelAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CancelAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelAccountResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Contains the value 'true' if the request was successful, 'false' otherwise.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="SuspendAccountRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	            Request to suspend an account
+	        </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="SuspendAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SuspendAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="ReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="MemoText" type="xsd:string"/><xsd:element minOccurs="0" name="SuspendDate" type="xsd:date"/><xsd:element minOccurs="0" name="UnsuspendDate" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:element name="SuspendAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="SuspendAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SuspendAccountResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Contains the value 'true' if the request was successful, 'false' otherwise.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UnsuspendAccountRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	            Request to unsuspend an account
+	        </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="UnsuspendAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UnsuspendAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="ReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="MemoText" type="xsd:string"/><xsd:element minOccurs="0" name="UnsuspendDate" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:element name="UnsuspendAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="UnsuspendAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UnsuspendAccountResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+						Contains the value 'true' if the request was successful, 'false' otherwise.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="ReopenAccountRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	            Request to re-open an account. Only canceled accounts can be re-opened.
+	        </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="ReopenAccountRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ReopenAccountRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="MemoText" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="ReopenAccountResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="ReopenAccountResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ReopenAccountResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="CreateAccountMemoRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+                Register a Fokus memo on an account
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="MemoText" type="xsd:string"/><xsd:element minOccurs="0" name="MemoType" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="CreateAccountMemoResponse"><xsd:complexType><xsd:sequence><xsd:element name="Success" type="xsd:boolean"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="SuspendSubscriptionsRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	        Used to suspend one or more subscriptions which belong to a certain account. 
+	        If a specified subscription does not reside on the specified account, it won't be found.
+
+	        To suspend, you need to specify the following parameters (for each subscription):
+	        * TelephoneNumber, the subscription to suspend.
+	        * ReasonCode, the cause of the suspension.
+	        * StartDate, if specified it dictates a date and time at which the suspension should take effect.
+	        * MemoText, the memo describing the circumstances of the suspension.
+
+	        Optional parameters are:
+	        * EndDate, in case the suspension is temporary, this is the date and time at which the subscription is restored.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="SuspendSubscriptionsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SuspendSubscriptionsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" name="Subscription" type="ChangeSubscriptionStatus"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ChangeSubscriptionStatus"><xsd:sequence><xsd:element minOccurs="0" name="MemoText" type="xsd:string"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element minOccurs="0" name="ReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="StartDate" type="xsd:dateTime"/><xsd:element minOccurs="0" name="EndDate" type="xsd:dateTime"/><xsd:element minOccurs="0" name="Waiving" type="xsd:boolean"/><xsd:element minOccurs="0" name="WaiveReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="SimCard" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="ChangeSubscriptionStatusResponse"><xsd:sequence><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element name="Successful" type="xsd:boolean"/><xsd:element name="Error" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="SuspendSubscriptionsResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+	        If the call was received properly, the "Successful" parameter is always true.
+                For each subscription, the following parameters are returned:
+                * TelephoneNumber, the subscription which was changed.
+                * Successful, if true, the subscription was successfully changed.
+                * Error, if "Successful" was false, this field is populated with the error/cause of the failed change.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="SuspendSubscriptionsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="SuspendSubscriptionsResponseBase"><xsd:sequence><xsd:element name="Successful" type="xsd:boolean"/><xsd:element minOccurs="0" name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="Subscription" type="ChangeSubscriptionStatusResponse"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="RestoreSuspendedSubscriptionsRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	        Used to restore one or more suspended subscriptions which belong to a certain account. 
+	        If a specified subscription does not reside on the specified account, it won't be found.
+
+	        To restore the suspension, you need to specify the following parameters (for each subscription):
+	        * TelephoneNumber, the subscription to restore.
+	        * ReasonCode, the cause of the restoring.
+	        * StartDate, if specified it dictates a date and time at which the restoring should take effect.
+	        * MemoText, the memo describing the circumstances of the suspension.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="RestoreSuspendedSubscriptionsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="RestoreSuspendedSubscriptionsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" name="Subscription" type="ChangeSubscriptionStatus"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="RestoreSuspendedSubscriptionsResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+	        If the call was received properly, the "Successful" parameter is always true.
+                For each subscription, the following parameters are returned:
+                * TelephoneNumber, the subscription which was changed.
+                * Successful, if true, the subscription was successfully changed.
+                * Error, if "Successful" was false, this field is populated with the error/cause of the failed change.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="RestoreSuspendedSubscriptionsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="RestoreSuspendedSubscriptionsResponseBase"><xsd:sequence><xsd:element name="Successful" type="xsd:boolean"/><xsd:element minOccurs="0" name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="Subscription" type="ChangeSubscriptionStatusResponse"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CancelSubscriptionsRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	        Used to cancel one or more subscriptions which belong to a certain account. 
+	        If a specified subscription does not reside on the specified account, it won't be found.
+
+	        To cancel, you need to specify the following parameters (for each subscription):
+	        * TelephoneNumber, the subscription to cancel.
+	        * ReasonCode, the cause of the cancellation.
+	        * StartDate, if specified it dictates a date and time at which the cancellation should take effect.
+	        * MemoText, the memo describing the circumstances of the cancellation.
+	        * Waiving, a boolean specifying if any involved costs should be waived.
+	        * WaiveReasonCode, the waive reason-code
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CancelSubscriptionsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelSubscriptionsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" name="Subscription" type="ChangeSubscriptionStatus"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CancelSubscriptionsResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+	        If the call was received properly, the "Successful" parameter is always true.
+                For each subscription, the following parameters are returned:
+                * TelephoneNumber, the subscription which was changed.
+                * Successful, if true, the subscription was successfully changed.
+                * Error, if "Successful" was false, this field is populated with the error/cause of the failed change.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CancelSubscriptionsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelSubscriptionsResponseBase"><xsd:sequence><xsd:element name="Successful" type="xsd:boolean"/><xsd:element minOccurs="0" name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="Subscription" type="ChangeSubscriptionStatusResponse"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="ResumeCancelledSubscriptionsRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+	        Used to resume one or more cancelled subscriptions which belong to a certain account. 
+	        If a specified subscription does not reside on the specified account, it won't be found.
+
+	        To resume, you need to specify the following parameters (for each subscription):
+	        * TelephoneNumber, the subscription to resume.
+	        * ReasonCode, the cause of the resume.
+	        * MemoText, the memo describing the circumstances of the resume.
+	        * Waiving, a boolean specifying if any involved costs should be waived.
+	        * SimCard, the primary SIM (ICC) to use when resuming the subscription.
+
+	        This method does not support specifying additional products or offerings,
+                since such functionality is already supported via the Subscription end-point.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="ResumeCancelledSubscriptionsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ResumeCancelledSubscriptionsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" name="Subscription" type="ChangeSubscriptionStatus"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="ResumeCancelledSubscriptionsResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+	        If the call was received properly, the "Successful" parameter is always true.
+                For each subscription, the following parameters are returned:
+                * TelephoneNumber, the subscription which was changed.
+                * Successful, if true, the subscription was successfully changed.
+                * Error, if "Successful" was false, this field is populated with the error/cause of the failed change.
+	    </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="ResumeCancelledSubscriptionsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ResumeCancelledSubscriptionsResponseBase"><xsd:sequence><xsd:element name="Successful" type="xsd:boolean"/><xsd:element minOccurs="0" name="Subscriptions"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="Subscription" type="ChangeSubscriptionStatusResponse"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ipl.netcom.no/service/simpletypes/v1_2" xmlns="http://ipl.netcom.no/service/simpletypes/v1_2" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:simpleType name="NumericString"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="([0-9])*"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength2"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 2.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{2}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength3"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 3.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{3}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength4"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 4.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{4}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength8"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 8.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{8}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength9"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 9.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{9}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength11"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 11.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{11}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength15"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 15.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{15}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength20"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, length 20.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{20}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength0to4"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, minimum length 0, maximum length 4.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{0,4}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength0to8"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, minimum length 0, maximum length 8.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{0,8}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength1to4"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, minimum length 1, maximum length 4.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{1,4}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength1to8"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, minimum length 1, maximum length 8.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{1,8}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NumericStringLength2to3"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric Strings, minimum length 2, maximum length 3.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{2,3}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to8"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 8</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="8"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to16"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 16</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="16"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to32"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 32</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="32"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to64"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 64</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="64"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to128"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 128</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="128"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to256"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 256</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="256"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to512"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 512</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="512"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to1024"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 1024</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="1024"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength0to2048"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 0 to 2048</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="2048"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to8"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 8</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="8"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to16"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 16</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="16"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to32"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 32</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="32"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to64"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 64</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="64"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to128"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 128</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="128"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="StringLength1to256"><xsd:annotation><xsd:documentation xml:lang="en">Used for Character Strings, length 1 to 256</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="1"/><xsd:maxLength value="256"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="UpperCaseAlphaLength1to2"><xsd:annotation><xsd:documentation xml:lang="en">Used for Alpha String, length 2 (for letter codes)</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[A-Z]{1,2}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="Numeric0to99"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric values, from 0 to 99 inclusive.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:integer"><xsd:minInclusive value="0"/><xsd:maxInclusive value="99"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="Numeric0to999"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric values, from 0 to 999 inclusive.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:integer"><xsd:minInclusive value="0"/><xsd:maxInclusive value="999"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="Numeric0to9999"><xsd:annotation><xsd:documentation xml:lang="en">Used for Numeric values, from 0 to 9999 inclusive.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:integer"><xsd:minInclusive value="0"/><xsd:maxInclusive value="9999"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="PositiveIntegerType"><xsd:annotation><xsd:documentation>Used for Positive Integer values.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:positiveInteger"><xsd:maxExclusive value="100"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="ISO3166-1"><xsd:annotation><xsd:documentation source="en">Two or three character country code as defined in the ISO3166-1 standard. Alpha-2 indicates a two
+				letter system, while alpha-3 indicates a three letter system.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[a-zA-Z]{3}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="DateOrDateTimeType"><xsd:annotation><xsd:documentation xml:lang="en">A construct to validate either a data or dateTimeValue.</xsd:documentation></xsd:annotation><xsd:union memberTypes="xsd:date xsd:dateTime"/></xsd:simpleType><xsd:simpleType name="DateOrTimeOrDateTimeType"><xsd:annotation><xsd:documentation xml:lang="en">A construct to validate either a date or a time or dateTime.</xsd:documentation></xsd:annotation><xsd:union memberTypes="xsd:date xsd:dateTime xsd:time"/></xsd:simpleType><xsd:simpleType name="DayOrMonthDay"><xsd:annotation><xsd:documentation xml:lang="en">A construct to validate either a date or a month and day value.</xsd:documentation></xsd:annotation><xsd:union memberTypes="xsd:date xsd:dateTime xsd:time"/></xsd:simpleType><xsd:simpleType name="YearOrYearMonthType"><xsd:annotation><xsd:documentation xml:lang="en">A construct to validate either a year or a year and month value.</xsd:documentation></xsd:annotation><xsd:union memberTypes="xsd:gYear xsd:gYearMonth"/></xsd:simpleType><xsd:simpleType name="CurrencyType"><xsd:annotation><xsd:documentation xml:lang="en">ISO 4217 standard describing currency code to define the names of currencies established by th ISO.
+			</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:length value="3"/><xsd:enumeration value="NOK"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="SIM_CardNumberType"><xsd:annotation><xsd:documentation xml:lang="en">A 19 or 20 digit number that identifies a individual SIM card. If there is a 20th digit then this is
+				a checksum (e.g. 08947080001001514657).</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{20}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="IMEI_NumberType"><xsd:annotation><xsd:documentation xml:lang="en">A 19 or 20 digit number that identifies a individual SIM card. If there is a 20th digit then this is
+				a checksum (e.g. 08947080001001514657).</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{15}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="OrganizationNumberType"><xsd:annotation><xsd:documentation xml:lang="en">A nine digit registration number for a company (e.g. 951 589 888).</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:pattern value="[0-9]{9}"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="EmailAddressType"><xsd:annotation><xsd:documentation xml:lang="en">Used for email address.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="256"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="CommunicationLevelType"><xsd:annotation><xsd:documentation xml:lang="en">Defines a set of valid values for the communication level that may be applied (e.g. AllCommunication,
+				NoCommunication). Caution, there are all enumeration types for all environment like Netcom, TeliaDK. 
+        Be aware which environment you are using and which enums could be use there.</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:NMTOKEN"><xsd:enumeration value="NoSMS_MMS_Communication"/><xsd:enumeration value="NoTelemarketingCommunication"/><xsd:enumeration value="NoSMS_MMS_TelemarketingCommunication"/><xsd:enumeration value="NoEmailCommunication"/><xsd:enumeration value="NoEmail_SMS_MMS_Communication"/><xsd:enumeration value="NoEmail_SMS_MMS_TelemarketingCommunication"/><xsd:enumeration value="NoEmailTelemarketingCommunication"/><xsd:enumeration value="NoCommunication"/><xsd:enumeration value="AllCommunication"/><xsd:enumeration value="NoMarketingInfo"/><xsd:enumeration value="GeneralMarketing"/><xsd:enumeration value="UsageSpecificMarketing"/><xsd:enumeration value="GeneralAndUsageSpecificMarketing"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="DirectoryListingLevelType"><xsd:annotation><xsd:documentation xml:lang="en">Defines a set of valid values for the directory listing level that may be applied (e.g. NoListing,
+				CompleteListingPrivate, CompleteListingBusiness).</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:NMTOKEN"><xsd:enumeration id="A" value="AddressListingOnlyElectronicDirectory"/><xsd:enumeration id="B" value="NameListingOnlyElectronicDirectory"/><xsd:enumeration id="C" value="CompleteListingElectronicDirectory"/><xsd:enumeration id="D" value="AddressListingOnlyManualDirectory"/><xsd:enumeration id="E" value="NameListingOnlyManualDirectory"/><xsd:enumeration id="F" value="CompleteListingManualDirectory"/><xsd:enumeration id="G" value="AddressListingOnly"/><xsd:enumeration id="H" value="NameListingOnly"/><xsd:enumeration id="W" value="CompleteListingBusiness"/><xsd:enumeration id="X" value="CompleteListingPrivate"/><xsd:enumeration id="Z" value="NoListing"/></xsd:restriction></xsd:simpleType></xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ipl.netcom.no/service/common/v1_2" xmlns="http://ipl.netcom.no/service/common/v1_2" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation>
+			The following xsd:elements define messages exchanged by the Billing Handler service
+        </xsd:documentation></xsd:annotation><xsd:element name="AdditionalOfferings"><xsd:complexType><xsd:complexContent><xsd:extension base="AdditionalOfferingsType"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="AdditionalOfferingsType"><xsd:sequence><xsd:element name="AdditionalOffering" type="xsd:string"/><xsd:element minOccurs="0" name="sequenceNumber" type="xsd:integer"><xsd:annotation><xsd:documentation>
+						To be removed soon!
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="serviceAgreementId" type="xsd:integer"><xsd:annotation><xsd:documentation>
+						The unique agreement id in case this is an existing offering, otherwise empty or zero (0).
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="AdditionalProductType"><xsd:sequence><xsd:element minOccurs="0" name="product" type="xsd:string"/><xsd:element minOccurs="0" name="explicitSoc" type="xsd:string"/><xsd:element minOccurs="0" name="action" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Allowed values are: A (ADD), M (MODIFY) and D (DELETE) for "regular" additional products,
+						in addition there is C (CANCEL) and S (SETTLE) for LOAN/LEAS products.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="serviceState" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Applicable to Switch/Loan products only. Allowed values are: ACTIVE, PENDING, SETTLED_WITH_CREDIT.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="sequenceNumber" type="xsd:integer"><xsd:annotation><xsd:documentation>
+						To be removed soon!
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="serviceAgreementId" type="xsd:integer"><xsd:annotation><xsd:documentation>
+						The unique agreement id in case this is an existing product, otherwise empty or zero (0).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="clientUniqueRefId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The unique (per order) reference id which NSL should use to populate responses with,
+						in order for clients to be able to track which requested additional resulted in which added additional product.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="downPayment" type="DownPaymentType"><xsd:annotation><xsd:documentation>
+						The downpayment, if any. Currently only used on the Flexible Lease/Switch products.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" name="productCharacteristics" type="ProductCharacteristicsType"/><xsd:element minOccurs="0" name="effectiveFromNextBillingCycle" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:complexType name="ProductCharacteristicsType"><xsd:sequence><xsd:element minOccurs="0" name="featureCode" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="productCharacteristicsValues" type="ProductCharacteristicsTypeValue"/></xsd:sequence></xsd:complexType><xsd:complexType name="ProductCharacteristicsTypeValue"><xsd:sequence><xsd:element minOccurs="0" name="code" type="xsd:string"/><xsd:element minOccurs="0" name="value" type="xsd:string"/><xsd:element minOccurs="0" name="defaultValue" type="xsd:string"/><xsd:element minOccurs="0" name="description" type="xsd:string"/><xsd:element minOccurs="0" name="characteristicType" type="xsd:string"/><xsd:element minOccurs="0" name="mandatory" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:complexType name="CharacteristicTypesType"><xsd:annotation><xsd:documentation xml:lang="en">TODO</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="Name" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">TODO</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="ValidationRule" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">TODO</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="AgreementItems"><xsd:complexType><xsd:complexContent><xsd:extension base="AgreementItem"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="AgreementItem"><xsd:sequence><xsd:element name="name" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="Customer" type="CustomerType"/><xsd:complexType name="IndividualType"><xsd:sequence><xsd:element minOccurs="0" name="nationalIdentity" type="xsd:string"/><xsd:element minOccurs="0" name="title" type="xsd:string"/><xsd:element minOccurs="0" name="firstName" type="xsd:string"/><xsd:element minOccurs="0" name="middleInitial" type="xsd:string"/><xsd:element minOccurs="0" name="middleNames" type="xsd:string"/><xsd:element minOccurs="0" name="surname" type="xsd:string"/><xsd:element minOccurs="0" name="roleName" type="xsd:string"/><xsd:element minOccurs="0" name="birthDate" type="xsd:date"/><xsd:element minOccurs="0" name="gender" type="xsd:string"/><xsd:element minOccurs="0" name="idNumber" type="xsd:string"/><xsd:element minOccurs="0" name="maritalStatus" type="xsd:string"/><xsd:element minOccurs="0" name="nationality" type="xsd:string"/><xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/><xsd:element minOccurs="0" name="contactPhone" type="TelephoneNumberType"/><xsd:element minOccurs="0" name="Address" type="AddressType"/><xsd:element minOccurs="0" name="employmentType" type="xsd:string"/><xsd:element minOccurs="0" name="personId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="OrganizationType"><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/><xsd:element minOccurs="0" name="additionalName" type="xsd:string"/><xsd:element minOccurs="0" name="organizationNumber" type="xsd:string"/><xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/><xsd:element minOccurs="0" name="Address" type="AddressType"/></xsd:sequence></xsd:complexType><xsd:complexType name="ContactType"><xsd:sequence><xsd:element name="firstName" type="xsd:string"/><xsd:element name="lastName" type="xsd:string"/><xsd:element minOccurs="0" name="workPhone" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="AddressType"><xsd:choice><xsd:element name="UrbanAddress" type="UrbanAddressType"/><xsd:element name="POBoxAddress" type="POBoxAddressType"/></xsd:choice></xsd:complexType><xsd:complexType name="CustomerType"><xsd:choice><xsd:element name="Individual" type="IndividualType"/><xsd:element name="Organization" type="OrganizationType"/></xsd:choice></xsd:complexType><xsd:complexType name="POBoxAddressType"><xsd:sequence><xsd:element minOccurs="0" name="coName" type="xsd:string"/><xsd:element minOccurs="0" name="boxNr" type="xsd:string"/><xsd:element minOccurs="0" name="boxName" type="xsd:string"/><xsd:element minOccurs="0" name="city" type="xsd:string"/><xsd:element minOccurs="0" name="iso3countryCode" type="xsd:string"/><xsd:element minOccurs="0" name="postcode" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="UrbanAddressType"><xsd:annotation><xsd:documentation>Used for regular (non P.O. Box) addresses</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="coName" type="xsd:string"/><xsd:element minOccurs="0" name="streetName" type="xsd:string"/><xsd:element minOccurs="0" name="streetNr" type="xsd:string"/><xsd:element minOccurs="0" name="streetNrSuffix" type="xsd:string"/><xsd:element minOccurs="0" name="city" type="xsd:string"/><xsd:element minOccurs="0" name="iso3countryCode" type="xsd:string"/><xsd:element minOccurs="0" name="postcode" type="xsd:string"/><xsd:element minOccurs="0" name="floorNumber" type="xsd:string"/><xsd:element minOccurs="0" name="doorNumber" type="xsd:string"/><xsd:element minOccurs="0" name="direction" type="xsd:string"/><xsd:element minOccurs="0" name="locality" type="xsd:string"/><xsd:element minOccurs="0" name="housing" type="xsd:string"/><xsd:element minOccurs="0" name="municipality" type="xsd:string"/><xsd:element minOccurs="0" name="sinceDate" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:complexType name="TelephoneNumberType"><xsd:annotation><xsd:documentation>
+				CountryCode (String): 2 digits. Example is 47.
+				LocalNumber (String): 8 digits. Example is 92600000.
+				NumberType  (String): 3 chars.  Example is GSM, CDA or PBX.
+			</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="CountryCode" type="xsd:string"/><xsd:element name="LocalNumber" type="xsd:string"/><xsd:element minOccurs="0" name="NumberType" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="TelephoneNumberFilterType"><xsd:annotation><xsd:documentation>
+				countryCode (String): Example: 47. location (String): Defaults to NET NET group (String): Defaults to A
+				localNumberPattern (String):
+				Specifies a pattern for the numbers to get. Example: 926%. Default is %
+				maxQuantity (int): Specifies how many numbers to get, defaults to 10.
+				organizationNumber: If this is set
+				we use it to retrieve company specific telephone numbers that are available
+            </xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="countryCode" type="xsd:string"/><xsd:element minOccurs="0" name="location" type="xsd:string"/><xsd:element minOccurs="0" name="group" type="xsd:string"/><xsd:element minOccurs="0" name="localNumberPattern" type="xsd:string"/><xsd:element default="5" minOccurs="0" name="maxQuantity" type="xsd:integer"/><xsd:element minOccurs="0" name="organizationNumber" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="Order"><xsd:sequence><xsd:element minOccurs="0" name="type" type="OrderType"/></xsd:sequence><xsd:attribute name="id" type="xsd:string" use="required"/></xsd:complexType><xsd:simpleType name="OrderType"><xsd:restriction base="xsd:token"><xsd:enumeration value="EXISTING"/><xsd:enumeration value="NEW"/><xsd:enumeration value="UPGRADE"/><xsd:enumeration value="EXT_PORT_IN"/><xsd:enumeration value="INT_PORT_IN"/><xsd:enumeration value="FIXED_LINE_PORT_IN"/></xsd:restriction></xsd:simpleType><xsd:element name="PublishLevel" type="PublishLevelType"/><xsd:complexType name="PublishLevelType"><xsd:annotation><xsd:documentation>
+				This is the Publish Level type. Represent the Publish Level of a subscription.
+            </xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="LevelCode" type="xsd:string"/><xsd:element minOccurs="0" name="ShortDescription" type="xsd:string"/><xsd:element minOccurs="0" name="LongDescription" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="PersonalNumberIndex" type="PersonalNumberIndexType"/><xsd:complexType name="PersonalNumberIndexType"><xsd:annotation><xsd:documentation>CUG or VPN</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="type" type="xsd:string"/><xsd:element name="value" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="Account" type="AccountType"/><xsd:complexType name="AccountType"><xsd:sequence><xsd:element name="Id" type="xsd:string"/><xsd:element minOccurs="0" name="AccountName" type="xsd:string"/><xsd:element minOccurs="0" name="Status" type="xsd:string"/><xsd:element minOccurs="0" name="ActiveSubscriptionsCount" type="xsd:int"/></xsd:sequence></xsd:complexType><xsd:complexType name="AccountIdentifierType"><xsd:annotation><xsd:documentation>
+				Identifies an account, can be either account id (aka BAN) or the TelephoneNumber of a subscriber under
+				the account
+            </xsd:documentation></xsd:annotation><xsd:choice><xsd:element minOccurs="0" name="TelephoneNumber" type="TelephoneNumberType"><xsd:annotation><xsd:documentation>
+						The telephone number on which to validate this configuration order, optional
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						If account is given the additional products will be applied to all subscribers on the account
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:choice></xsd:complexType><xsd:complexType name="AccountIdentifierSequencedType"><xsd:sequence><xsd:element minOccurs="0" name="TelephoneNumber" type="TelephoneNumberType"/><xsd:element minOccurs="0" name="AccountId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="SuccessType"><xsd:annotation><xsd:documentation xml:lang="en">
+				Standard way to indicate successful proccessing of a Ninja Services message. Returning an empty element
+				of this
+				type indicates success
+            </xsd:documentation></xsd:annotation></xsd:complexType><xsd:complexType name="FailureType"><xsd:annotation><xsd:documentation xml:lang="en">
+				Standard way to indicate non-successful proccessing of a Ninja Services message. Returning an empty
+				element of
+				this type indicates failure
+            </xsd:documentation></xsd:annotation></xsd:complexType><xsd:complexType name="SubscriptionType"><xsd:sequence><xsd:element name="TelephoneNumber" type="TelephoneNumberType"/><xsd:element name="ProductUser" type="CustomerType"/><xsd:element name="SubscriptionStatus" type="xsd:string"/><xsd:element minOccurs="0" name="SubscriptionStatusReasonCode" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="SimCardType"><xsd:sequence><xsd:element name="SimCardNumber" type="xsd:string"/><xsd:element name="PukCode" type="xsd:string"/><xsd:element name="ActivationCode" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="BillingMethodType"><xsd:sequence><xsd:element name="BillingMethod" type="xsd:string"/><xsd:element minOccurs="0" name="EmailAddress" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="AgreementIdentificationType"><xsd:sequence><xsd:element minOccurs="0" name="OrganisationNumber" type="xsd:string"/><xsd:element minOccurs="0" name="AgreementId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="WirelessFamilyAdministratorType"><xsd:choice><xsd:element minOccurs="0" name="NonNetComAdministrator" type="NonNetComSubscriber"/><xsd:element minOccurs="0" name="NetcomAdministrator" type="SubscriberType"/></xsd:choice></xsd:complexType><xsd:complexType name="NonNetComSubscriber"><xsd:sequence><xsd:element minOccurs="0" name="TelephoneNumber" type="TelephoneNumberType"/><xsd:element minOccurs="0" name="Party" type="IndividualType"/></xsd:sequence></xsd:complexType><xsd:complexType name="ProductAgreementType"><xsd:sequence><xsd:element name="Code" type="xsd:string"/><xsd:element minOccurs="0" name="Reference" type="xsd:string"/><xsd:element minOccurs="0" name="EffectiveDate" type="xsd:date"/><xsd:element minOccurs="0" name="Mode" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Mode telling whether the new (subscription) or old (CSI additional info)
+						way of retrieving this information is used
+						MODE_ADDITIONAL_INFO =
+						"A"
+						MODE_SUB_ORG_MEMBER = "S"
+						MODE_BOTH = "B"
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="SubscriberType"><xsd:sequence><xsd:element minOccurs="0" name="AgreementId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Agreement id - Typically the organizational
+						number for organizations
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Account id - Ban number
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SubscriptionType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of subscription - ex: ACTIVE_TALK
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Type of agreement - Legal values are PRIVATE,
+						ORGANIZATION, BUSINESS
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementSubtype" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Agreement subtype - Legal values are REGULAR,
+						MEMBER, EMPLOYEE, INDIVIDUAL
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommitmentStart" type="xsd:date"><xsd:annotation><xsd:documentation>
+						Start date for commitment on current
+						subscription
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommitmentEnd" type="xsd:date"><xsd:annotation><xsd:documentation>
+						End date for commitment on current subscription
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SubscriptionStatus" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Status for current subscription, ex: A (Active)
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" ref="AdditionalOfferings"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProducts" type="AdditionalProductType"/><xsd:element maxOccurs="unbounded" minOccurs="0" ref="AgreementItems"/><xsd:element name="ProductUser" type="IndividualType"><xsd:annotation><xsd:documentation>
+						Contains customer information for the product
+						user
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="IsSecretNumber" type="xsd:boolean"><xsd:annotation><xsd:documentation>Is this a secret number or not.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="BillingType" type="xsd:string"><xsd:annotation><xsd:documentation>Contains the billing type</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="TelephoneNumberType"/><xsd:element minOccurs="0" name="ProductAgreement" type="ProductAgreementType"/></xsd:sequence></xsd:complexType><xsd:complexType name="AgreementTermType"><xsd:annotation><xsd:documentation>
+				Used for special agreement terms regarding agreement. For example used for BHI to identify organization: Code: organizationId, value:
+				orgId
+        </xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="name" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="value" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="SubscriberBalanceType"><xsd:annotation><xsd:documentation>This is the SubscriberBalance data structure</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="balanceDate" type="xsd:dateTime"/><xsd:element minOccurs="0" name="callTimeMinutesRemaining" type="xsd:integer"/><xsd:element minOccurs="0" name="smsRemaining" type="xsd:integer"/><xsd:element minOccurs="0" name="mmsRemaining" type="xsd:integer"/></xsd:sequence></xsd:complexType><xsd:complexType name="Country"><xsd:sequence><xsd:element name="countryCode" type="xsd:string"/><xsd:element name="isoName" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:simpleType name="AdjustmentType"><xsd:annotation><xsd:documentation xml:lang="en">These are the supported adjustment types</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:token"><xsd:enumeration value="NEXT_INVOICE"/><xsd:enumeration value="CREDIT_NOTE"/><xsd:enumeration value="PRINTED_CREDIT_NOTE"/></xsd:restriction></xsd:simpleType><xsd:complexType name="CommunicationPreferenceType"><xsd:annotation><xsd:documentation xml:lang="en">Provides communication preference information</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="code" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Code indicating a communication preference (e.g. A, B, or C)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="description" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Text describing a communication preference (e.g. (language:Norwegian) Nei til SMS/MMS)
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:simpleType name="CallForwardingActionType"><xsd:annotation><xsd:documentation xml:lang="en">These are the supported call forwarding actions</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:token"><xsd:enumeration value="ADD"/><xsd:enumeration value="REMOVE"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="CallForwardingType"><xsd:annotation><xsd:documentation xml:lang="en">These are the supported call forwarding types</xsd:documentation></xsd:annotation><xsd:restriction base="xsd:token"><xsd:enumeration value="UNCONDITIONAL"/><xsd:enumeration value="GENERAL"/><xsd:enumeration value="WHEN_BUSY"/><xsd:enumeration value="WHEN_NO_REPLY"/><xsd:enumeration value="WHEN_NOT_REACHABLE"/></xsd:restriction></xsd:simpleType><xsd:complexType name="BillConfiguration"><xsd:annotation><xsd:documentation xml:lang="en">Information about invoiceType and payment methods with additional parameters.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element minOccurs="0" name="invoiceType" type="xsd:string"/><xsd:element minOccurs="0" name="paymentMethod" type="PaymentMethod"/><xsd:element minOccurs="0" name="billCycle" type="xsd:int"><xsd:annotation><xsd:documentation>
+                Bill Cycle for new account. Usually a value between 1 and 20-something.
+              </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="PaymentMethod"><xsd:annotation><xsd:documentation xml:lang="en">New parameters for payment methods, like bank name and bank account number etc.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="name" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="PaymentMethodParameter"/></xsd:sequence></xsd:complexType><xsd:complexType name="PaymentMethodParameter"><xsd:sequence><xsd:element name="name" type="xsd:string"/><xsd:element name="value" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="DownPaymentType"><xsd:sequence><xsd:element name="amount" type="xsd:decimal"><xsd:annotation><xsd:documentation xml:lang="en">
+						The full downpayment amount, which is broken down into installments,
+						based on the specified nr of installments and configuration in the billing system.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="installments" type="xsd:integer"><xsd:annotation><xsd:documentation xml:lang="en">
+						The number of installments to add, which are based on the specified amount
+						and configuration in the billing system.
+					</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType></xsd:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" jaxb:version="1.0" targetNamespace="http://ipl.netcom.no/version2.0/annotation" xmlns="http://ipl.netcom.no/version2.0/annotation" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:complexType name="Annotation"><xs:sequence><xs:element minOccurs="0" name="brandid" type="xs:string"/><xs:element name="clienttraceid" type="xs:string"/><xs:element minOccurs="0" name="servertraceid" type="xs:string"/><xs:element name="callsequencetrace" type="xs:string"/><xs:element minOccurs="0" name="cleartrusttoken" type="xs:string"/><xs:element minOccurs="0" name="endusername" type="xs:string"/><xs:element minOccurs="0" name="languagecode" type="xs:string"/></xs:sequence></xs:complexType><xs:element name="AnnotationRoot" type="Annotation"/></xs:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ipl.netcom.no/service/order/v1_2" xmlns="http://ipl.netcom.no/service/order/v1_2" xmlns:ann="http://ipl.netcom.no/version2.0/annotation" xmlns:common="http://ipl.netcom.no/service/common/v1_2" xmlns:simpletypes="http://ipl.netcom.no/service/simpletypes/v1_2" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation>The following xsd:elements define messages exchanged by the order service</xsd:documentation></xsd:annotation><xsd:import namespace="http://ipl.netcom.no/service/simpletypes/v1_2"/><xsd:import namespace="http://ipl.netcom.no/service/common/v1_2"/><xsd:import namespace="http://ipl.netcom.no/version2.0/annotation"/><xsd:element name="CreateOrderMemoRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderMemoRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderMemoRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="OrderId" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="SimCardNumber" type="xsd:string"/><xsd:element minOccurs="0" name="Offering" type="xsd:string"/><xsd:element name="OrderAction" type="xsd:string"><xsd:annotation><xsd:documentation>Valid states are purchase and cancel</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="Client" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="CreateOrderMemoResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderMemoResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderMemoResponseBase"><xsd:sequence><xsd:element name="memoCreatedSuccessfully" type="xsd:boolean"><xsd:annotation><xsd:documentation>Returns true if the memo is successfully created for the subscription </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CancelOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="CancelOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element name="OrderType" type="xsd:string"/><xsd:element name="OrderId" type="xsd:long"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/></xsd:sequence></xsd:complexType><xsd:element name="CancelOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CancelOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CancelOrderResponseBase"><xsd:sequence><xsd:element name="Result" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="ProcessOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="ProcessOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ProcessOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="KeepExistingDealerCode" type="xsd:boolean"/><xsd:element name="OrderType" type="xsd:string"/><xsd:element name="OrderId" type="xsd:long"/><xsd:element name="CoolingOfPeriod" type="xsd:int"/><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element minOccurs="0" name="ExistingAccountId" type="xsd:string"><xsd:annotation><xsd:documentation>Optional - Existing account id, the account (BAN) to create this subscription under</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OrganizationId" type="xsd:string"><xsd:annotation><xsd:documentation>Optional - The id of the organization to which this subscription belongs (AgreementId)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementType" type="xsd:string"><xsd:annotation><xsd:documentation>Type of agreement - Legal values are PRIVATE, ORGANIZATION, BUSINESS</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementSubType" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AgreementItems"/><xsd:element minOccurs="0" name="OfferingCode" type="xsd:string"><xsd:annotation><xsd:documentation>
+            The code identifying the subscription chosen by the user together with additional offering code or promotion code- ex:FLEXPA15+PROMO1.TLF06SPOT
+            At first is price plan code alias subscription type. After plus mark could be placed promo code and after dot mark is additional offering.
+          </xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ProductSetComplete" type="xsd:boolean"/><xsd:element minOccurs="0" name="AdditionalProducts"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProduct" type="common:AdditionalProductType"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalTelephoneNumbers" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation>Identifies additonal numbers to include in case this is a Port-order. Needed in case this is a bundled ISDN number being ported.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="LegalResponsible" type="common:CustomerType"><xsd:annotation><xsd:documentation>Contains customer information for the legal responsible</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="ProductUser" type="common:IndividualType"><xsd:annotation><xsd:documentation>Contains customer information for the product user</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="InvoiceReceiver" type="common:CustomerType"><xsd:annotation><xsd:documentation>Contains customer information for the invoice receiver</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="FormerLegalOwner" type="formerLegalOwner"><xsd:annotation><xsd:documentation>
+						The former legal owner of the telephone number. Used when doing
+						portins and the telephone number is legally owned by another
+						person/organization
+						than the now new legal owner.
+		  </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SimCard" type="xsd:string"><xsd:annotation><xsd:documentation>Simcard - TODO: Put in proper documentation</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="HandsetImeiCode" type="xsd:string"><xsd:annotation><xsd:documentation>Handset imei code</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommunicationPreferenceCode" type="xsd:string"><xsd:annotation><xsd:documentation>Identifies a communication preference code (e.g. lang:Norwegian, Y - Ja til all 1:1 kommunikasjon).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="DirectoryListingCode" type="xsd:string"><xsd:annotation><xsd:documentation>Identifies a directory Listing code (e.g. lang:Norwegian, X - Komplett oppføring).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CommunicationPreference" type="CommunicationPreferenceType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the communication preference (e.g. No SMS or MMS Communcation).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="DirectoryListing" type="DirectoryListingType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the directory listing (e.g. Name Listing Only).</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="PortAfterCommitment" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">Port after the commitment with the donor operator has expired.
+						If set then this will override the requested porting date.
+						The porting date will be indicated later by the donor operator.
+						This option is only supported for the TELIADK brand.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="RequestedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Identifies requested porting date.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NrdbReferenceId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">NRDB porting reference ID</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NetworkOperatorId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Donor network operator ID of porting number (required in Denmark)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="TemporaryTelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">Temporary telephone number to use until port date (required in Denmark)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="DonorSimCard" type="xsd:string"><xsd:annotation><xsd:documentation>Number of SIM card (ICC) that porting number is registered to with donor operator (required for some donors in Denmark)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="ProductAgreement" type="ProductAgreementType"/><xsd:element minOccurs="0" name="SubscriptionTransferInformation" type="SubscriptionTransferInformationType"/><xsd:element minOccurs="0" name="creditLimit" type="xsd:int"><xsd:annotation><xsd:documentation>credit limit for new account. Which is going to set in Fokus</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="WaiveActivationFee" type="xsd:boolean"/><xsd:element minOccurs="0" name="WaiveSimReplacementFee" type="xsd:boolean"/><xsd:element minOccurs="0" name="OfferingChangeType" type="xsd:string"/><xsd:element minOccurs="0" name="BreakageFeeAccepted" type="xsd:boolean"/><xsd:element minOccurs="0" name="WaiveBreakageFee" type="xsd:boolean"/><xsd:element minOccurs="0" name="CompletionDate" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:complexType name="SubscriptionTransferInformationType"><xsd:annotation><xsd:documentation xml:lang="en">Used to provide information about a subscription transfer.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="userText" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Text supplied by the user when executing a subscription transfer.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="transferReason" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">The reason for why a transfer has been initialized.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="keepExistingNameAndAddress" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">Indicates if the existing name and address on a subscription shall be kept when performing a transfer. True
+						indicates that the
+						name and address will be kept, false indicates not to keep the existing name and address.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="formerLegalOwner"><xsd:annotation><xsd:documentation>
+				Used to identify a former legal owner throug an id and a name. Currently used in portin orders
+            </xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="name" type="xsd:string"><xsd:annotation><xsd:documentation>The name of the former legal owner.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="id" type="simpletypes:NumericString"><xsd:annotation><xsd:documentation>
+						Might be either a birthdate on format YYYYMMDD if former owner is private or an organizational
+						number (9 digits, for example 999999999)
+						if former legal owner is organization
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="ProcessOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="ProcessOrderBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ProcessOrderBase"><xsd:sequence><xsd:element name="SuccessfulOrder" type="xsd:boolean"><xsd:annotation><xsd:documentation>True if the order was successfully created, otherwise false.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="PortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation>The porting date for this order, only supplied if this is a porting order</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="PortingReferenceID" type="xsd:integer"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the porting order by a unique reference ID.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="NewAccountId" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">If processing of the order resulted in a new account being created, the new account id is returned here.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SubscriptionStatus" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">The status of a subscription, once the processing has finished successfully, is returned here.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AdditionalOffering" type="common:AdditionalOfferingsType"><xsd:annotation><xsd:documentation>The additional offering, post processing.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AdditionalProducts"><xsd:annotation><xsd:documentation>The additional products, post processing.</xsd:documentation></xsd:annotation><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProduct" type="common:AdditionalProductType"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ConfigurationSubjectType"><xsd:choice><xsd:element minOccurs="0" name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation>The telephone number on which to validate this configuration order, optional</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation>If account is given the additional products will be applied to all subscribers on the account</xsd:documentation></xsd:annotation></xsd:element></xsd:choice></xsd:complexType><xsd:element name="ProcessConfigurationOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="ProcessConfigurationOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ProcessConfigurationOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"><xsd:annotation><xsd:documentation>The client will time out after this specified number of milliseconds</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation>The dealer placing this order</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"><xsd:annotation><xsd:documentation>The Operator Id of the orderer (Fokus User ID)</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="OrderType" type="xsd:string"><xsd:annotation><xsd:documentation>Order type, this should be set to "C"</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ConfigurationSubject" type="ConfigurationSubjectType"><xsd:annotation><xsd:documentation>Possible configuration subjects are telephone number and account.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AdditionalProducts"><xsd:annotation><xsd:documentation>The additional products to process.</xsd:documentation></xsd:annotation><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProduct" type="common:AdditionalProductType"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="ProcessConfigurationOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="ProcessConfigurationOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ProcessConfigurationOrderResponseBase"><xsd:sequence><xsd:element name="OrderProcessed" type="xsd:boolean"><xsd:annotation><xsd:documentation>True if the order was processed without error by Ninja</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UpdateSubscriptionOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateSubscriptionOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateSubscriptionOrderRequestBase"><xsd:sequence><xsd:element name="OrderId" type="xsd:long"><xsd:annotation><xsd:documentation>The id of the order to upgrade, mostly used for logging purposes</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation>Telephone number </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="HandsetImeiCode" type="xsd:string"><xsd:annotation><xsd:documentation>Handset imei code to upgrade subscription with</xsd:documentation></xsd:annotation></xsd:element><xsd:element ref="ann:AnnotationRoot"><xsd:annotation><xsd:documentation>
+						Identifies the client and contains info about the
+						context of the call. Used for logging purposes.
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ClientTimeout" type="xsd:long"><xsd:annotation><xsd:documentation>Timeout (in seconds) before the caller times out.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation>
+						Dealer code, identifies the dealer performing the upgrade.
+                    </xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"><xsd:annotation><xsd:documentation>The Operator Id of the orderer (Fokus User ID)</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UpdateSubscriptionOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="UpdateSubscriptionOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdateSubscriptionOrderResponseBase"><xsd:sequence><xsd:element name="SuccessfulOrderUpdate" type="xsd:boolean"><xsd:annotation><xsd:documentation>True if the order was successfully updated, otherwise false.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="UpdatePortingOrderRequest"><xsd:annotation><xsd:documentation xml:lang="en">The Update Porting Order Request message requests updating a porting order with a given
+				porting reference ID.
+				The request messsage contains information about a porting order customer and a porting date which the client is able to update.
+			</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="UpdatePortingOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdatePortingOrderRequestBase"><xsd:annotation><xsd:documentation xml:lang="en">The Update Porting Order Request Base message contains basic information for requesting update porting order.
+			</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element ref="ann:AnnotationRoot"><xsd:annotation><xsd:documentation>Identifies the client and contains info about the context of the call. Used for logging purposes.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ClientTimeout" type="xsd:long"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the time before the client times out (e.g. 60 seconds).</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Identifies which channel is making the request.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Identifies which dealer is making the request.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"><xsd:annotation><xsd:documentation>The Operator Id of the orderer (Fokus User ID)</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="PortingOrder" type="PortingOrderType"><xsd:annotation><xsd:documentation xml:lang="en">Contains information about a porting order.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CustomerName" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">The (new) name of the customer to update along with the porting order.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="PortingOrderType"><xsd:annotation><xsd:documentation xml:lang="en">Specifies a porting order containing order ID, porting date, and a customer.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="portingReferenceID" type="xsd:integer"><xsd:annotation><xsd:documentation xml:lang="en">Identifies an order by reference ID.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies a telephone number to be ported.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="RequestedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Identifies a requested porting date (date format: yyyyMMdd the customer wants to be ported (e.g. 20080705).
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="CoolingOffPeriod" type="xsd:int"><xsd:annotation><xsd:documentation xml:lang="en">Identifies number of days to add to the requested porting date specified.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="PortingCustomerInformation" type="PortingCustomerInformationType"><xsd:annotation><xsd:documentation xml:lang="en">Provides information about the porting customer.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="PortingCustomerInformationType"><xsd:annotation><xsd:documentation xml:lang="en">Contains basic information about a porting customer. Birth number for an individual and organization number for
+				an organization.</xsd:documentation></xsd:annotation><xsd:choice><xsd:element name="BirthDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Identifies an individual by birth date (date format yyyyMMdd. e.g. 19772010).</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="OrganizationNumber" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Identifies an organization by organization number (e.g. 900700800).</xsd:documentation></xsd:annotation></xsd:element></xsd:choice></xsd:complexType><xsd:element name="UpdatePortingOrderResponse"><xsd:annotation><xsd:documentation xml:lang="en">The Update Porting Order Response message returns a success value and a porting reference ID. True indicates if
+				the porting order has successfully been updated, false indicates
+				that the update porting order has failed.</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="UpdatePortingOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="UpdatePortingOrderResponseBase"><xsd:annotation><xsd:documentation xml:lang="en">The Update Porting Order Response Base message contains basic information returned for the updating a porting
+				order.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">Indicates if the porting order was successfully updated with the requested information. True indicates
+						success, false indicates failure.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="PortingReferenceID" type="xsd:integer"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the porting order by a unique reference ID.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="PortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Indicates the date when the porting will be executed.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="CommunicationPreferenceType"><xsd:annotation><xsd:documentation xml:lang="en">Provides information about communication preferences.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="CommunicationLevel" type="simpletypes:CommunicationLevelType"><xsd:annotation><xsd:documentation xml:lang="en">Indicates a communication level.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="DirectoryListingType"><xsd:annotation><xsd:documentation xml:lang="en">Provieds information about a directory listing.</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="DirectoryListingLevel" type="simpletypes:DirectoryListingLevelType"><xsd:annotation><xsd:documentation xml:lang="en">TODO</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="GetEstimatedPortingDateRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetEstimatedPortingDateRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetEstimatedPortingDateRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation>The dealer requesting for estimated portin date</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"><xsd:annotation><xsd:documentation>The Operator Id of the orderer (Fokus User ID)</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element minOccurs="0" name="RequestedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Identifies requested porting date.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element name="CoolingOffPeriod" type="xsd:int"/></xsd:sequence></xsd:complexType><xsd:element name="GetEstimatedPortingDateResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetEstimatedPortingDateResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetEstimatedPortingDateResponseBase"><xsd:sequence><xsd:element minOccurs="0" name="EstimatedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation>
+						The estimated porting date for this order
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CheckPortingOrderRequest"><xsd:annotation><xsd:documentation>Validates a porting order and sends an estimated porting date in response if valids</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CheckPortingOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CheckPortingOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element name="ClientTimeout" type="xsd:long"/><xsd:element name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="BrandId" type="xsd:string"/><xsd:element name="OrderId" type="xsd:long"><xsd:annotation><xsd:documentation>The id of the order to upgrade, mostly used for logging purposes</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementType" type="xsd:string"><xsd:annotation><xsd:documentation>Type of agreement - Legal values are PRIVATE, ORGANIZATION, BUSINESS</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AgreementSubType" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AgreementItems"/><xsd:element name="SubcriptionType" type="xsd:string"><xsd:annotation><xsd:documentation>The code identifying the subscription chosen by the user- ex: ACTIVE_TALK</xsd:documentation></xsd:annotation></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalOffering" type="common:AdditionalOfferingsType"/><xsd:element minOccurs="0" name="PortAfterCommitment" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">Port after the commitment with the donor operator has expired.
+						If set then this will override the requested porting date and no estimated porting date will be returned.
+						The porting date will be indicated later by the donor operator.
+						This option is only supported for the TELIADK brand.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="RequestedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation xml:lang="en">Identifies requested porting date.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element name="CoolingOffPeriod" type="xsd:int"/><xsd:element minOccurs="0" name="ExistingAgreementIdentifier" type="ExistingAgreementIdentifierType"><xsd:annotation><xsd:documentation xml:lang="en">Provides information to identify an existing agreement. Either the existing agreement is identified by
+						a
+						telephone number or an account ID.</xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ExistingAgreementIdentifierType"><xsd:annotation><xsd:documentation xml:lang="en">Identifies an existing agreement based on a telephone number or an account ID.</xsd:documentation></xsd:annotation><xsd:choice><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"><xsd:annotation><xsd:documentation>The telephone number to use for identifying the existing agreement.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="AccountId" type="xsd:string"><xsd:annotation><xsd:documentation>The account ID to use for identifying the existing agreement.</xsd:documentation></xsd:annotation></xsd:element></xsd:choice></xsd:complexType><xsd:element name="CheckPortingOrderResponse"><xsd:annotation><xsd:documentation>
+				The response is an estimated porting date based on a requested date specified by client
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="CheckPortingOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CheckPortingOrderResponseBase"><xsd:sequence><xsd:element minOccurs="0" name="EstimatedPortingDate" type="xsd:dateTime"><xsd:annotation><xsd:documentation>
+						The estimated porting date for this order
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ProductAgreementType"><xsd:sequence><xsd:element name="Code" type="xsd:string"/><xsd:element minOccurs="0" name="Reference" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="ActivateSubscriptionRequest"><xsd:annotation><xsd:documentation>Request for activating the subscription in the billng system by sending the simcard number. The subscription should
+				be in state reserved
+				but if the subscription is already active then the service will do nothing.</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="ActivateSubscriptionRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ActivateSubscriptionRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"><xsd:annotation><xsd:documentation>Identifies the client and contains info about the context of the call. Used for logging purposes.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ClientTimeout" type="xsd:long"><xsd:annotation><xsd:documentation xml:lang="en">Identifies the time before the client times out (e.g. 60 seconds).</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="ChannelType" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Identifies which channel is making the request.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="DealerCode" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Identifies which dealer is making the request.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="OrderId" type="xsd:long"><xsd:annotation><xsd:documentation xml:lang="en">Identifies an order uniquely. Passed in by the OrderManager.</xsd:documentation></xsd:annotation></xsd:element><xsd:element name="TelephoneNumber" type="common:TelephoneNumberType"/><xsd:element minOccurs="0" name="SimCard" type="xsd:string"><xsd:annotation><xsd:documentation xml:lang="en">Simcard - Ex: 08947080021000011612</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="WaiveActivationFee" type="xsd:boolean"/></xsd:sequence></xsd:complexType><xsd:element name="ActivateSubscriptionResponse"><xsd:annotation><xsd:documentation>Returns true if the subscription was successfully activated</xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="ActivateSubscriptionResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="ActivateSubscriptionResponseBase"><xsd:sequence><xsd:element name="Result" type="xsd:boolean"/><xsd:element minOccurs="0" name="AdditionalOffering" type="common:AdditionalOfferingsType"><xsd:annotation><xsd:documentation>The additional offering, post processing.</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="AdditionalProducts"><xsd:annotation><xsd:documentation>The additional products, post processing.</xsd:documentation></xsd:annotation><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalProduct" type="common:AdditionalProductType"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="CreateOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="Client" type="xsd:string"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="OrderDetails" type="OrderDetailsNew"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalInfo" type="AdditionalInfoNew"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="OrderLines" type="OrderLineNew"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Payments" type="PaymentNew"/></xsd:sequence></xsd:complexType><xsd:element name="CreateOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderResponseBase"><xsd:sequence><xsd:element minOccurs="0" name="OrderNumber" type="xsd:integer"/></xsd:sequence></xsd:complexType><xsd:element name="CreateOrderPaymentsRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderPaymentsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderPaymentsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="Client" type="xsd:string"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Payments" type="PaymentNew"/></xsd:sequence></xsd:complexType><xsd:element name="CreateOrderPaymentsResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="CreateOrderPaymentsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="CreateOrderPaymentsResponseBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="ExternalOrderId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="GetOrderPaymentsRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrderPaymentsRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrderPaymentsRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="ExternalOrderId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="GetOrderPaymentsResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrderPaymentsResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrderPaymentsResponseBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="Payment" type="Payment"/></xsd:sequence></xsd:complexType><xsd:element name="GetOrdersRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrdersRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrdersRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:choice><xsd:element name="AccountNumber" type="xsd:integer"/><xsd:element name="OrderNumber" type="xsd:integer"/></xsd:choice></xsd:sequence></xsd:complexType><xsd:element name="GetOrdersResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrdersResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrdersResponseBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="OrderDetails" type="OrderDetails"/></xsd:sequence></xsd:complexType><xsd:element name="GetOrderRequest"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrderRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrderRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="ChannelType" type="xsd:string"/><xsd:element minOccurs="0" name="ClientTimeout" type="xsd:long"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="OrderNumber" type="xsd:integer"/></xsd:sequence></xsd:complexType><xsd:element name="GetOrderResponse"><xsd:complexType><xsd:complexContent><xsd:extension base="GetOrderResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="GetOrderResponseBase"><xsd:sequence><xsd:element name="OrderDetails" type="OrderDetails"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalInfo" type="AdditionalInfo"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="OrderLines" type="OrderLine"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="Payments" type="Payment"/></xsd:sequence></xsd:complexType><xsd:complexType name="AdditionalInfoBase"><xsd:sequence><xsd:element name="FieldName" type="xsd:string"/><xsd:element name="FieldValue" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="AdditionalInfoNew"><xsd:complexContent><xsd:extension base="AdditionalInfoBase"/></xsd:complexContent></xsd:complexType><xsd:complexType name="AdditionalInfo"><xsd:complexContent><xsd:extension base="AdditionalInfoNew"><xsd:sequence><xsd:element minOccurs="0" name="OrderNumber" type="xsd:integer"/><xsd:element minOccurs="0" name="SysCreationDate" type="xsd:date"/><xsd:element minOccurs="0" name="SysUpdateDate" type="xsd:date"/></xsd:sequence></xsd:extension></xsd:complexContent></xsd:complexType><xsd:complexType name="OrderLineBase"><xsd:sequence><xsd:element minOccurs="0" name="AdjustmentReasonCode" type="xsd:string"/><xsd:element minOccurs="0" name="Amount" type="xsd:double"/><xsd:element minOccurs="0" name="BillComment" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalCostAmount" type="xsd:double"/><xsd:element minOccurs="0" name="ExternalLinkedTransactionId" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalProductId" type="xsd:string"/><xsd:element name="ExternalTransactionId" type="xsd:string"/><xsd:element name="FeatureCode" type="xsd:string"/><xsd:element name="Quantity" type="xsd:integer"/><xsd:element minOccurs="0" name="SubscriberNumber" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="OrderLineNew"><xsd:complexContent><xsd:extension base="OrderLineBase"><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalInfo" type="AdditionalInfoNew"/></xsd:sequence></xsd:extension></xsd:complexContent></xsd:complexType><xsd:complexType name="OrderLine"><xsd:complexContent><xsd:extension base="OrderLineBase"><xsd:sequence><xsd:element minOccurs="0" name="OrderNumber" type="xsd:integer"/><xsd:element minOccurs="0" name="OrderLineNumber" type="xsd:integer"/><xsd:element minOccurs="0" name="SysCreationDate" type="xsd:date"/><xsd:element minOccurs="0" name="SysUpdateDate" type="xsd:date"/><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalInfo" type="AdditionalInfo"/></xsd:sequence></xsd:sequence></xsd:extension></xsd:complexContent></xsd:complexType><xsd:complexType name="OrderDetailsBase"><xsd:sequence><xsd:element minOccurs="0" name="Ban" type="xsd:integer"/><xsd:element minOccurs="0" name="OrderMode"><xsd:annotation><xsd:documentation>
+						The order mode, allowed values are "I" for Immediate, "P" for Pending (default).
+					</xsd:documentation></xsd:annotation><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:enumeration value="I"/><xsd:enumeration value="P"/></xsd:restriction></xsd:simpleType></xsd:element><xsd:element minOccurs="0" name="Description" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalPartnerId" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalSourceSystemCode" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalOrderId" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalLinkedOrderid" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalCompleteDate" type="xsd:date"/></xsd:sequence></xsd:complexType><xsd:complexType name="OrderDetailsNew"><xsd:complexContent><xsd:extension base="OrderDetailsBase"/></xsd:complexContent></xsd:complexType><xsd:complexType name="OrderDetails"><xsd:complexContent><xsd:extension base="OrderDetailsNew"><xsd:sequence><xsd:element minOccurs="0" name="OrderNumber" type="xsd:integer"/><xsd:element minOccurs="0" name="OrderCreationDate" type="xsd:date"/><xsd:element minOccurs="0" name="OrderStatus" type="xsd:string"/><xsd:element minOccurs="0" name="StatusDate" type="xsd:date"/></xsd:sequence></xsd:extension></xsd:complexContent></xsd:complexType><xsd:complexType name="PaymentBase"><xsd:sequence><xsd:element minOccurs="0" name="PaymentAmount" type="xsd:double"/><xsd:element minOccurs="0" name="PaymentMethod" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The payment method must be a valid combination together with the PaymentSubMethod
+						as defined/configured in Fokus.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="PaymentSubMethod" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The payment sub-method must be a valid combination together with the Paymentethod
+						as defined/configured in Fokus.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SourceType" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The source type must be a valid combination together with the source id
+						as defined/configured in Fokus.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="SourceId" type="xsd:string"><xsd:annotation><xsd:documentation>
+						The source id must be a valid combination together with the source type
+						as defined/configured in Fokus.
+					</xsd:documentation></xsd:annotation></xsd:element><xsd:element minOccurs="0" name="ReferenceId" type="xsd:string"/><xsd:element minOccurs="0" name="ExternalOrderId" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="PaymentNew"><xsd:complexContent><xsd:extension base="PaymentBase"/></xsd:complexContent></xsd:complexType><xsd:complexType name="Payment"><xsd:complexContent><xsd:extension base="PaymentNew"><xsd:sequence><xsd:element minOccurs="0" name="Ban" type="xsd:integer"/><xsd:element minOccurs="0" name="PaymentSequenceNumber" type="xsd:integer"/><xsd:element minOccurs="0" name="PaymentCreationDate" type="xsd:date"/><xsd:element minOccurs="0" name="PaymentStatus" type="xsd:string"/><xsd:element minOccurs="0" name="PaymentStatusDate" type="xsd:date"/><xsd:element minOccurs="0" name="ARPaymentEntitySequenceNumber" type="xsd:integer"/></xsd:sequence></xsd:extension></xsd:complexContent></xsd:complexType></xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ipl.netcom.no/service/account/v1_3" xmlns="http://ipl.netcom.no/service/account/v1_3" xmlns:ann="http://ipl.netcom.no/version2.0/annotation" xmlns:common="http://ipl.netcom.no/service/common/v1_2" xmlns:order="http://ipl.netcom.no/service/order/v1_2" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation>
+			The following xsd:elements define messages exchanged by the Account service
+		</xsd:documentation></xsd:annotation><xsd:import namespace="http://ipl.netcom.no/service/order/v1_2"/><xsd:import namespace="http://ipl.netcom.no/version2.0/annotation"/><xsd:import namespace="http://ipl.netcom.no/service/common/v1_2"/><xsd:import namespace="http://ipl.netcom.no/service/account/v1_2"/><xsd:element name="BanChangeBillCycleRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+                Used to change ban bill cycle - Tuxedo service blChngCyc
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanChangeBillCycleRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanChangeBillCycleRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="BillCycle" type="xsd:integer"/><xsd:element name="IsImmediate" type="xsd:boolean"/><xsd:element name="UserText" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="BanChangeBillCycleResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+                If the call was received properly, the "Successful" parameter is always true.
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanChangeBillCycleResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanChangeBillCycleResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+                        Contains the value 'true' if the request was successful, 'false' otherwise.
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="BanChangeBillPrintLanguageRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+                Used to change ban bill print language
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanChangeBillPrintLanguageRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanChangeBillPrintLanguageRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element name="BillPrintLanguage" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="BanChangeBillPrintLanguageResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+                If the call was received properly, the "Successful" parameter is always true.
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanChangeBillPrintLanguageResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanChangeBillPrintLanguageResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+                        Contains the value 'true' if the request was successful, 'false' otherwise.
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType><xsd:element name="BanAdditionalInfoRequest"><xsd:annotation><xsd:documentation xml:lang="en">
+                Used to update ban additional info
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanAdditionalInfoRequestBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanAdditionalInfoRequestBase"><xsd:sequence><xsd:element ref="ann:AnnotationRoot"/><xsd:element minOccurs="0" name="DealerCode" type="xsd:string"/><xsd:element minOccurs="0" name="OperatorId" type="xsd:integer"/><xsd:element minOccurs="0" name="SalesAgentCode" type="xsd:string"/><xsd:element name="AccountId" type="xsd:string"/><xsd:element minOccurs="0" name="AdditionalInfoData"><xsd:complexType><xsd:sequence><xsd:element maxOccurs="unbounded" minOccurs="0" name="AdditionalInfoDataItem" type="AdditionalInfoType"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="UserText" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="AdditionalInfoType"><xsd:sequence><xsd:element minOccurs="0" name="key" type="xsd:string"/><xsd:element minOccurs="0" name="value" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:element name="BanAdditionalInfoResponse"><xsd:annotation><xsd:documentation xml:lang="en">
+                If the call was received properly, the "Successful" parameter is always true.
+            </xsd:documentation></xsd:annotation><xsd:complexType><xsd:complexContent><xsd:extension base="BanAdditionalInfoResponseBase"/></xsd:complexContent></xsd:complexType></xsd:element><xsd:complexType name="BanAdditionalInfoResponseBase"><xsd:sequence><xsd:element name="Success" type="xsd:boolean"><xsd:annotation><xsd:documentation xml:lang="en">
+                        Contains the value 'true' if the request was successful, 'false' otherwise.
+                    </xsd:documentation></xsd:annotation></xsd:element></xsd:sequence></xsd:complexType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CancelOrderResponse">
+    <wsdl:part element="sch4:CancelOrderResponse" name="CancelOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetWirelessFamilySubscribersRequest">
+    <wsdl:part element="sch0:GetWirelessFamilySubscribersRequest" name="GetWirelessFamilySubscribersRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelSubscriptionsResponse">
+    <wsdl:part element="sch0:CancelSubscriptionsResponse" name="CancelSubscriptionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountBillingAddressRequest">
+    <wsdl:part element="sch0:UpdateAccountBillingAddressRequest" name="UpdateAccountBillingAddressRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModifyAccountRequest">
+    <wsdl:part element="sch0:ModifyAccountRequest" name="ModifyAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetAccountBillingMethodResponse">
+    <wsdl:part element="sch0:SetAccountBillingMethodResponse" name="SetAccountBillingMethodResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrderPaymentsRequest">
+    <wsdl:part element="sch4:GetOrderPaymentsRequest" name="GetOrderPaymentsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrderResponse">
+    <wsdl:part element="sch4:GetOrderResponse" name="GetOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanChangeBillPrintLanguageResponse">
+    <wsdl:part element="sch5:BanChangeBillPrintLanguageResponse" name="BanChangeBillPrintLanguageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAccountRequest">
+    <wsdl:part element="sch0:CreateAccountRequest" name="CreateAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderPaymentsResponse">
+    <wsdl:part element="sch4:CreateOrderPaymentsResponse" name="CreateOrderPaymentsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBillingTypesResponse">
+    <wsdl:part element="sch0:GetAvailableBillingTypesResponse" name="GetAvailableBillingTypesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuspendAccountRequest">
+    <wsdl:part element="sch0:SuspendAccountRequest" name="SuspendAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckPortingOrderResponse">
+    <wsdl:part element="sch4:CheckPortingOrderResponse" name="CheckPortingOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanChangeBillCycleRequest">
+    <wsdl:part element="sch5:BanChangeBillCycleRequest" name="BanChangeBillCycleRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuspendSubscriptionsResponse">
+    <wsdl:part element="sch0:SuspendSubscriptionsResponse" name="SuspendSubscriptionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvoiceReprintResponse">
+    <wsdl:part element="sch0:InvoiceReprintResponse" name="InvoiceReprintResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeferInvoicePaymentRequest">
+    <wsdl:part element="sch0:DeferInvoicePaymentRequest" name="DeferInvoicePaymentRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderMemoResponse">
+    <wsdl:part element="sch4:CreateOrderMemoResponse" name="CreateOrderMemoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderMemoRequest">
+    <wsdl:part element="sch4:CreateOrderMemoRequest" name="CreateOrderMemoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessConfigurationOrderResponse">
+    <wsdl:part element="sch4:ProcessConfigurationOrderResponse" name="ProcessConfigurationOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderResponse">
+    <wsdl:part element="sch4:CreateOrderResponse" name="CreateOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrderRequest">
+    <wsdl:part element="sch4:GetOrderRequest" name="GetOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAccountMemoResponse">
+    <wsdl:part element="sch0:CreateAccountMemoResponse" name="CreateAccountMemoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ModifyAccountResponse">
+    <wsdl:part element="sch0:ModifyAccountResponse" name="ModifyAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetCollectionAwaitingCreditCardPaymentResponse">
+    <wsdl:part element="sch0:SetCollectionAwaitingCreditCardPaymentResponse" name="SetCollectionAwaitingCreditCardPaymentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrdersRequest">
+    <wsdl:part element="sch4:GetOrdersRequest" name="GetOrdersRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RestoreSuspendedSubscriptionsRequest">
+    <wsdl:part element="sch0:RestoreSuspendedSubscriptionsRequest" name="RestoreSuspendedSubscriptionsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelAccountResponse">
+    <wsdl:part element="sch0:CancelAccountResponse" name="CancelAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePortingOrderRequest">
+    <wsdl:part element="sch4:UpdatePortingOrderRequest" name="UpdatePortingOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CopyAccountResponse">
+    <wsdl:part element="sch0:CopyAccountResponse" name="CopyAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReopenAccountRequest">
+    <wsdl:part element="sch0:ReopenAccountRequest" name="ReopenAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResumeCancelledSubscriptionsResponse">
+    <wsdl:part element="sch0:ResumeCancelledSubscriptionsResponse" name="ResumeCancelledSubscriptionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessConfigurationOrderRequest">
+    <wsdl:part element="sch4:ProcessConfigurationOrderRequest" name="ProcessConfigurationOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderRequest">
+    <wsdl:part element="sch4:CreateOrderRequest" name="CreateOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeferInvoicePaymentResponse">
+    <wsdl:part element="sch0:DeferInvoicePaymentResponse" name="DeferInvoicePaymentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnsuspendAccountResponse">
+    <wsdl:part element="sch0:UnsuspendAccountResponse" name="UnsuspendAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetCollectionAwaitingCreditCardPaymentRequest">
+    <wsdl:part element="sch0:SetCollectionAwaitingCreditCardPaymentRequest" name="SetCollectionAwaitingCreditCardPaymentRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetWirelessFamilySubscribersResponse">
+    <wsdl:part element="sch0:GetWirelessFamilySubscribersResponse" name="GetWirelessFamilySubscribersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvoiceReprintRequest">
+    <wsdl:part element="sch0:InvoiceReprintRequest" name="InvoiceReprintRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CheckPortingOrderRequest">
+    <wsdl:part element="sch4:CheckPortingOrderRequest" name="CheckPortingOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAccountDataRequest">
+    <wsdl:part element="sch0:GetAccountDataRequest" name="GetAccountDataRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountLegalAddressResponse">
+    <wsdl:part element="sch0:UpdateAccountLegalAddressResponse" name="UpdateAccountLegalAddressResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetEstimatedPortingDateRequest">
+    <wsdl:part element="sch4:GetEstimatedPortingDateRequest" name="GetEstimatedPortingDateRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SetAccountBillingMethodRequest">
+    <wsdl:part element="sch0:SetAccountBillingMethodRequest" name="SetAccountBillingMethodRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdatePortingOrderResponse">
+    <wsdl:part element="sch4:UpdatePortingOrderResponse" name="UpdatePortingOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateSubscriptionOrderRequest">
+    <wsdl:part element="sch4:UpdateSubscriptionOrderRequest" name="UpdateSubscriptionOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResumeCancelledSubscriptionsRequest">
+    <wsdl:part element="sch0:ResumeCancelledSubscriptionsRequest" name="ResumeCancelledSubscriptionsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAccountDataResponse">
+    <wsdl:part element="sch0:GetAccountDataResponse" name="GetAccountDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountLegalAddressRequest">
+    <wsdl:part element="sch0:UpdateAccountLegalAddressRequest" name="UpdateAccountLegalAddressRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanChangeBillPrintLanguageRequest">
+    <wsdl:part element="sch5:BanChangeBillPrintLanguageRequest" name="BanChangeBillPrintLanguageRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessOrderRequest">
+    <wsdl:part element="sch4:ProcessOrderRequest" name="ProcessOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CopyAccountRequest">
+    <wsdl:part element="sch0:CopyAccountRequest" name="CopyAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanChangeBillCycleResponse">
+    <wsdl:part element="sch5:BanChangeBillCycleResponse" name="BanChangeBillCycleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessOrderResponse">
+    <wsdl:part element="sch4:ProcessOrderResponse" name="ProcessOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnsuspendAccountRequest">
+    <wsdl:part element="sch0:UnsuspendAccountRequest" name="UnsuspendAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReopenAccountResponse">
+    <wsdl:part element="sch0:ReopenAccountResponse" name="ReopenAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAccountResponse">
+    <wsdl:part element="sch0:CreateAccountResponse" name="CreateAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUnpaidInvoicesRequest">
+    <wsdl:part element="sch0:GetUnpaidInvoicesRequest" name="GetUnpaidInvoicesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrdersResponse">
+    <wsdl:part element="sch4:GetOrdersResponse" name="GetOrdersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActivateSubscriptionResponse">
+    <wsdl:part element="sch4:ActivateSubscriptionResponse" name="ActivateSubscriptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateSubscriptionOrderResponse">
+    <wsdl:part element="sch4:UpdateSubscriptionOrderResponse" name="UpdateSubscriptionOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelOrderRequest">
+    <wsdl:part element="sch4:CancelOrderRequest" name="CancelOrderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelAccountRequest">
+    <wsdl:part element="sch0:CancelAccountRequest" name="CancelAccountRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateOrderPaymentsRequest">
+    <wsdl:part element="sch4:CreateOrderPaymentsRequest" name="CreateOrderPaymentsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBillingTypesRequest">
+    <wsdl:part element="sch0:GetAvailableBillingTypesRequest" name="GetAvailableBillingTypesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RestoreSuspendedSubscriptionsResponse">
+    <wsdl:part element="sch0:RestoreSuspendedSubscriptionsResponse" name="RestoreSuspendedSubscriptionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuspendSubscriptionsRequest">
+    <wsdl:part element="sch0:SuspendSubscriptionsRequest" name="SuspendSubscriptionsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetEstimatedPortingDateResponse">
+    <wsdl:part element="sch4:GetEstimatedPortingDateResponse" name="GetEstimatedPortingDateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanAdditionalInfoResponse">
+    <wsdl:part element="sch5:BanAdditionalInfoResponse" name="BanAdditionalInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SuspendAccountResponse">
+    <wsdl:part element="sch0:SuspendAccountResponse" name="SuspendAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BanAdditionalInfoRequest">
+    <wsdl:part element="sch5:BanAdditionalInfoRequest" name="BanAdditionalInfoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUnpaidInvoicesResponse">
+    <wsdl:part element="sch0:GetUnpaidInvoicesResponse" name="GetUnpaidInvoicesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ActivateSubscriptionRequest">
+    <wsdl:part element="sch4:ActivateSubscriptionRequest" name="ActivateSubscriptionRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountBillingAddressResponse">
+    <wsdl:part element="sch0:UpdateAccountBillingAddressResponse" name="UpdateAccountBillingAddressResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAccountMemoRequest">
+    <wsdl:part element="sch0:CreateAccountMemoRequest" name="CreateAccountMemoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelSubscriptionsRequest">
+    <wsdl:part element="sch0:CancelSubscriptionsRequest" name="CancelSubscriptionsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetOrderPaymentsResponse">
+    <wsdl:part element="sch4:GetOrderPaymentsResponse" name="GetOrderPaymentsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Account">
+    <wsdl:operation name="CancelOrder">
+      <wsdl:input message="tns:CancelOrderRequest" name="CancelOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CancelOrderResponse" name="CancelOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetWirelessFamilySubscribers">
+      <wsdl:input message="tns:GetWirelessFamilySubscribersRequest" name="GetWirelessFamilySubscribersRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetWirelessFamilySubscribersResponse" name="GetWirelessFamilySubscribersResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSubscriptions">
+      <wsdl:input message="tns:CancelSubscriptionsRequest" name="CancelSubscriptionsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CancelSubscriptionsResponse" name="CancelSubscriptionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountBillingAddress">
+      <wsdl:input message="tns:UpdateAccountBillingAddressRequest" name="UpdateAccountBillingAddressRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAccountBillingAddressResponse" name="UpdateAccountBillingAddressResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAccount">
+      <wsdl:input message="tns:ModifyAccountRequest" name="ModifyAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ModifyAccountResponse" name="ModifyAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetAccountBillingMethod">
+      <wsdl:input message="tns:SetAccountBillingMethodRequest" name="SetAccountBillingMethodRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:SetAccountBillingMethodResponse" name="SetAccountBillingMethodResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPayments">
+      <wsdl:input message="tns:GetOrderPaymentsRequest" name="GetOrderPaymentsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetOrderPaymentsResponse" name="GetOrderPaymentsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <wsdl:input message="tns:GetOrderRequest" name="GetOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetOrderResponse" name="GetOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanChangeBillPrintLanguage">
+      <wsdl:input message="tns:BanChangeBillPrintLanguageRequest" name="BanChangeBillPrintLanguageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BanChangeBillPrintLanguageResponse" name="BanChangeBillPrintLanguageResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <wsdl:input message="tns:CreateAccountRequest" name="CreateAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateAccountResponse" name="CreateAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderPayments">
+      <wsdl:input message="tns:CreateOrderPaymentsRequest" name="CreateOrderPaymentsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateOrderPaymentsResponse" name="CreateOrderPaymentsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBillingTypes">
+      <wsdl:input message="tns:GetAvailableBillingTypesRequest" name="GetAvailableBillingTypesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAvailableBillingTypesResponse" name="GetAvailableBillingTypesResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SuspendAccount">
+      <wsdl:input message="tns:SuspendAccountRequest" name="SuspendAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:SuspendAccountResponse" name="SuspendAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPortingOrder">
+      <wsdl:input message="tns:CheckPortingOrderRequest" name="CheckPortingOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CheckPortingOrderResponse" name="CheckPortingOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanChangeBillCycle">
+      <wsdl:input message="tns:BanChangeBillCycleRequest" name="BanChangeBillCycleRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BanChangeBillCycleResponse" name="BanChangeBillCycleResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SuspendSubscriptions">
+      <wsdl:input message="tns:SuspendSubscriptionsRequest" name="SuspendSubscriptionsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:SuspendSubscriptionsResponse" name="SuspendSubscriptionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InvoiceReprint">
+      <wsdl:input message="tns:InvoiceReprintRequest" name="InvoiceReprintRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:InvoiceReprintResponse" name="InvoiceReprintResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeferInvoicePayment">
+      <wsdl:input message="tns:DeferInvoicePaymentRequest" name="DeferInvoicePaymentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:DeferInvoicePaymentResponse" name="DeferInvoicePaymentResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderMemo">
+      <wsdl:input message="tns:CreateOrderMemoRequest" name="CreateOrderMemoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateOrderMemoResponse" name="CreateOrderMemoResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessConfigurationOrder">
+      <wsdl:input message="tns:ProcessConfigurationOrderRequest" name="ProcessConfigurationOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ProcessConfigurationOrderResponse" name="ProcessConfigurationOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input message="tns:CreateOrderRequest" name="CreateOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateOrderResponse" name="CreateOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccountMemo">
+      <wsdl:input message="tns:CreateAccountMemoRequest" name="CreateAccountMemoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateAccountMemoResponse" name="CreateAccountMemoResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetCollectionAwaitingCreditCardPayment">
+      <wsdl:input message="tns:SetCollectionAwaitingCreditCardPaymentRequest" name="SetCollectionAwaitingCreditCardPaymentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:SetCollectionAwaitingCreditCardPaymentResponse" name="SetCollectionAwaitingCreditCardPaymentResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrders">
+      <wsdl:input message="tns:GetOrdersRequest" name="GetOrdersRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetOrdersResponse" name="GetOrdersResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RestoreSuspendedSubscriptions">
+      <wsdl:input message="tns:RestoreSuspendedSubscriptionsRequest" name="RestoreSuspendedSubscriptionsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:RestoreSuspendedSubscriptionsResponse" name="RestoreSuspendedSubscriptionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAccount">
+      <wsdl:input message="tns:CancelAccountRequest" name="CancelAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CancelAccountResponse" name="CancelAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePortingOrder">
+      <wsdl:input message="tns:UpdatePortingOrderRequest" name="UpdatePortingOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdatePortingOrderResponse" name="UpdatePortingOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyAccount">
+      <wsdl:input message="tns:CopyAccountRequest" name="CopyAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CopyAccountResponse" name="CopyAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReopenAccount">
+      <wsdl:input message="tns:ReopenAccountRequest" name="ReopenAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ReopenAccountResponse" name="ReopenAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ResumeCancelledSubscriptions">
+      <wsdl:input message="tns:ResumeCancelledSubscriptionsRequest" name="ResumeCancelledSubscriptionsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ResumeCancelledSubscriptionsResponse" name="ResumeCancelledSubscriptionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UnsuspendAccount">
+      <wsdl:input message="tns:UnsuspendAccountRequest" name="UnsuspendAccountRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UnsuspendAccountResponse" name="UnsuspendAccountResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountData">
+      <wsdl:input message="tns:GetAccountDataRequest" name="GetAccountDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAccountDataResponse" name="GetAccountDataResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountLegalAddress">
+      <wsdl:input message="tns:UpdateAccountLegalAddressRequest" name="UpdateAccountLegalAddressRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateAccountLegalAddressResponse" name="UpdateAccountLegalAddressResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimatedPortingDate">
+      <wsdl:input message="tns:GetEstimatedPortingDateRequest" name="GetEstimatedPortingDateRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetEstimatedPortingDateResponse" name="GetEstimatedPortingDateResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscriptionOrder">
+      <wsdl:input message="tns:UpdateSubscriptionOrderRequest" name="UpdateSubscriptionOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateSubscriptionOrderResponse" name="UpdateSubscriptionOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessOrder">
+      <wsdl:input message="tns:ProcessOrderRequest" name="ProcessOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ProcessOrderResponse" name="ProcessOrderResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnpaidInvoices">
+      <wsdl:input message="tns:GetUnpaidInvoicesRequest" name="GetUnpaidInvoicesRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetUnpaidInvoicesResponse" name="GetUnpaidInvoicesResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSubscription">
+      <wsdl:input message="tns:ActivateSubscriptionRequest" name="ActivateSubscriptionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ActivateSubscriptionResponse" name="ActivateSubscriptionResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanAdditionalInfo">
+      <wsdl:input message="tns:BanAdditionalInfoRequest" name="BanAdditionalInfoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:BanAdditionalInfoResponse" name="BanAdditionalInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="Error">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountSoap11" type="tns:Account">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CancelOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CancelOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetWirelessFamilySubscribers">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetWirelessFamilySubscribersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetWirelessFamilySubscribersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSubscriptions">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CancelSubscriptionsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelSubscriptionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountBillingAddress">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAccountBillingAddressRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAccountBillingAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ModifyAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ModifyAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetAccountBillingMethod">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SetAccountBillingMethodRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SetAccountBillingMethodResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderPayments">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetOrderPaymentsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetOrderPaymentsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanChangeBillPrintLanguage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BanChangeBillPrintLanguageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BanChangeBillPrintLanguageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderPayments">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateOrderPaymentsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateOrderPaymentsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBillingTypes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAvailableBillingTypesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAvailableBillingTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SuspendAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SuspendAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SuspendAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPortingOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CheckPortingOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CheckPortingOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanChangeBillCycle">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BanChangeBillCycleRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BanChangeBillCycleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SuspendSubscriptions">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SuspendSubscriptionsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SuspendSubscriptionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InvoiceReprint">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InvoiceReprintRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InvoiceReprintResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeferInvoicePayment">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeferInvoicePaymentRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeferInvoicePaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderMemo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateOrderMemoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateOrderMemoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessConfigurationOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ProcessConfigurationOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProcessConfigurationOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccountMemo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateAccountMemoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateAccountMemoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetCollectionAwaitingCreditCardPayment">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SetCollectionAwaitingCreditCardPaymentRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SetCollectionAwaitingCreditCardPaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrders">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetOrdersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RestoreSuspendedSubscriptions">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RestoreSuspendedSubscriptionsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RestoreSuspendedSubscriptionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CancelAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePortingOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdatePortingOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdatePortingOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CopyAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CopyAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReopenAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ReopenAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ReopenAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ResumeCancelledSubscriptions">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ResumeCancelledSubscriptionsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ResumeCancelledSubscriptionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UnsuspendAccount">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UnsuspendAccountRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UnsuspendAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAccountDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAccountDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountLegalAddress">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateAccountLegalAddressRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateAccountLegalAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstimatedPortingDate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetEstimatedPortingDateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetEstimatedPortingDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscriptionOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateSubscriptionOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateSubscriptionOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessOrder">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ProcessOrderRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ProcessOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnpaidInvoices">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetUnpaidInvoicesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetUnpaidInvoicesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateSubscription">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ActivateSubscriptionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ActivateSubscriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BanAdditionalInfo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="BanAdditionalInfoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="BanAdditionalInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountService">
+    <wsdl:port binding="tns:AccountSoap11" name="AccountSoap11">
+      <soap:address location="http://no-neo-pt-01.netcom.no:7001/Account/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
